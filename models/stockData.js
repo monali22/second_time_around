@@ -9,6 +9,7 @@ var StockSchema = new Schema({
         type: String,
         required: true
     },
+    //Foreign reference to UserData table
     user_id:{
         required:true
     },
