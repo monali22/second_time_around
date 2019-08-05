@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "axios": "^0.19.0",
     "cloudinary": "^1.14.0",
+    "concurrently": "^4.1.1",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",

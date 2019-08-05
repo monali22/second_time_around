@@ -3,7 +3,7 @@ const stockController = require("../../controllers/stockController");
 
 // Matches with "/api/stock"
 router.route("/")
-  .get(stockController.findAll)
+  //.get(stockController.findAll)
   .post(stockController.create);
 
   module.exports = router;
