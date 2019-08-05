@@ -1,11 +1,17 @@
 import React from 'react';
 import FORM from "./components/Form"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //SETTING GIT HUB TEST 1
 function App() {
   return (
+    <Router>
     <div>
-      <FORM/>
+      
+      <Switch>
+        <Route exact path="/" component={FORM} />
+      </Switch>
     </div>
+  </Router>
   );
 }
 
