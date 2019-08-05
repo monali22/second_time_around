@@ -1,5 +1,5 @@
 import React from 'react';
-import FORM from "./components/Form"
+import Form from "./Form/Form"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 //SETTING GIT HUB TEST 1
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div>
       
       <Switch>
-        <Route exact path="/" component={FORM} />
+        <Route exact path="/" component={Form} />
       </Switch>
     </div>
   </Router>
@@ -16,3 +16,5 @@ function App() {
 }
 
 export default App;
+
+

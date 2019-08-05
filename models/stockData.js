@@ -7,25 +7,27 @@ var StockSchema = new Schema({
 
     itemName:{
         type: String,
-        required: true
-    },
-    
-    user_id:{
-        required:true
+        required: true,
+        default:""
     },
     category:{
         type:String,
         required:true
     },
-    quantity:{
-        type:Number
-    },
-    claimed:{
-        type:Boolean
-    },
-    url:{
-        type:String
+    description:{
+        type:String,
+        required:true
     }
+    // },
+    // quantity:{
+    //     type:Number
+    // },
+    // claimed:{
+    //     type:Boolean
+    // },
+    // url:{
+    //     type:String
+    // }
 
 });
 

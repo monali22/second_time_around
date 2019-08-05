@@ -2,7 +2,7 @@ import React from "react";
 
 // This file exports the Input, TextArea, and FormBtn components
 
-export function Input(props) {
+export function InputText(props) {
   return (
     <div className="form-group">
       <input className="form-control" {...props} />
@@ -10,17 +10,19 @@ export function Input(props) {
   );
 }
 
-export function TextArea(props) {
+export function TextAreaText(props) {
   return (
     <div className="form-group">
-      <textarea className="form-control" rows="20" {...props} />
+      <textarea className="form-control" rows="10" {...props} />
     </div>
   );
 }
 
-export function FormBtn(props) {
+export function FormBtnn(props) {
   return (
-    <button {...props} style={{ float: "right", marginBottom: 10 }} className="btn btn-success">
+    <button {...props} style={{ marginLeft: "40%",
+    marginRight: "auto",
+    width: "20%" }} className="btn btn-success">
       {props.children}
     </button>
   );
