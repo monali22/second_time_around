@@ -21,7 +21,7 @@ export default function Form({onChange}) {
         <div className="form-group">
           <label>Choose a category:</label>
           <br />
-          <button type="button" className="btn btn-outline-primary">Cars</button>
+          <button type="button" className="btn btn-outline-primary">Toys</button>
           <button type="button" className="btn btn-outline-secondary">Housing</button>
           <button type="button" className="btn btn-outline-success">Electronics</button>
           <button type="button" className="btn btn-outline-danger">Sports</button>
@@ -31,7 +31,15 @@ export default function Form({onChange}) {
           <button type="button" className="btn btn-outline-dark">Other</button>
         </div>
         <div className="form-group">
-          <label >Description:</label>
+          <label >Product:</label>
+          <textarea type="text" className="form-control" id="description" placeholder="Description"></textarea>
+        </div>
+        <div className="form-group">
+          <label >Category:</label>
+          <textarea type="text" className="form-control" id="description" placeholder="Description"></textarea>
+        </div>
+        <div className="form-group">
+          <label >Location:</label>
           <textarea type="text" className="form-control" id="description" placeholder="Description"></textarea>
         </div>
         <div className="form-group">
