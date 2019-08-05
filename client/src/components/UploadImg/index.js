@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import { API_URL } from './config'
-import FORM from "../Form"
+import PostingForm from "../PostingForm"
 
 class UploadImg extends Component {
   
@@ -35,7 +35,7 @@ class UploadImg extends Component {
   render() {
     return (
       <div>
-          <FORM onChange={this.onChange}></FORM>
+          <PostingForm onChange={this.onChange}></PostingForm>
       </div>
     )
   }
