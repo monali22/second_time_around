@@ -1,0 +1,25 @@
+{
+  "name": "second_time_around",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monali22/second_time_around.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monali22/second_time_around/issues"
+  },
+  "homepage": "https://github.com/monali22/second_time_around#readme",
+  "dependencies": {
+    "mongoose": "^5.6.8",
+    "moongoose": "0.0.5"
+  }
+}
