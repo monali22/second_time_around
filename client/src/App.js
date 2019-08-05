@@ -1,5 +1,6 @@
 import React from 'react';
 import UploadImg from "./components/UploadImg";
+import PostForm from './components/PostForm';
 import Wrapper from "./components/Wrapper";
 import PostCollectCard from "./components/PostCollectCard";
 import Navbar from "./components/Navbar";
@@ -11,6 +12,7 @@ function App() {
       <Navbar/>
       <Jumbotron/>
       <UploadImg/>
+      <PostForm />
       <Wrapper>
         <PostCollectCard/>
       </Wrapper>

@@ -11,7 +11,7 @@ var StockSchema = new Schema({
     },
     
     user_id:{
-        required:true
+        type:Number
     },
     category:{
         type:String,
@@ -21,7 +21,8 @@ var StockSchema = new Schema({
         type:Number
     },
     claimed:{
-        type:Boolean
+        type:Boolean,
+        default:false
     },
     url:{
         type:String
