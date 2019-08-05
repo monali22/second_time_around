@@ -1,12 +1,14 @@
 import React from 'react';
-import FORM from "./components/Form"
-//SETTING GIT HUB TEST 1
+import UploadImg from "./components/UploadImg";
+
 function App() {
   return (
     <div>
-      <FORM/>
+      <UploadImg/>
     </div>
   );
 }
 
 export default App;
+
+
