@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const freeItemsRoutes = require("./freeItems");
-const stockDta = require("./stock");
+const stockRoute=require("./stock");
+
 
 // Free item routes
-//router.use("/freeItems", freeItemsRoutes);
-
-router.use("/stocks",stockDta);
+router.use("/freeItems", freeItemsRoutes);
+router.use("/stock",stockRoute);
 
 module.exports = router;

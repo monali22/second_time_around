@@ -18,9 +18,10 @@ cloudinary.config({
 
 app.use(formData.parse());
 
-app.use(cors({
-  origin: "localhost:3001"
-}))
+//app.use(cors({
+  //origin: "localhost:3001"
+//}))
+app.use(cors());
 
 app.post('/image-upload', (req, res) => {
 
