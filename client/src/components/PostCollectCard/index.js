@@ -37,13 +37,10 @@ function PostCollectCard() {
                 </div>
                 <div className="card-body">
                     <p className="card-text">Available for 24 hours | 0.24 miles from you</p>
-
                     {/*<!-- Collect Card -->*/}
-
                     {/*<!-- Button trigger modal -->*/}
                     <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                         I want it</button>
-
                     {/*<!-- Modal -->*/}
                     <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog"
                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
