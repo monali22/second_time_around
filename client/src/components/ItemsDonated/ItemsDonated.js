@@ -22,7 +22,7 @@ class ItemsDonated extends Component{
           .then(res =>{
             this.setState({ stocks: res.data })
             this.props.updatestock(this.state.stocks);
-            console.log(res.data);
+            //console.log(res.data);
           }
             
           )
@@ -31,7 +31,7 @@ class ItemsDonated extends Component{
 
 render()
 {
-    console.log(this.state.stocks);
+    //console.log(this.state.stocks);
     return(
     
     <div>

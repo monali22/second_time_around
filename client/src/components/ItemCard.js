@@ -1,6 +1,6 @@
 import React from 'react';
 const ItemCard=({item})=>{
-    console.log(item);
+    //console.log(item);
     return(
         <div className="card" >
     <img src="..." className="card-img-top" alt="..."/>

@@ -20,7 +20,7 @@ class App extends Component {
 
 
   return (
-    <Router>
+    /*<Router>*/
     <div>
       
       
@@ -34,7 +34,7 @@ class App extends Component {
 
       
     </div>
-  </Router>
+ /* </Router> */
   );
 }
 }

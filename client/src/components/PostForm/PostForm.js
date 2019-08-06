@@ -23,11 +23,11 @@ class PostForm extends Component {
   deletePost=id=>{
     if(id !==undefined )
     {
-      console.log("inside delete"+id);
+      //console.log("inside delete"+id);
       API.deleteData(id)
       .then(res =>{
         this.setState({ stock_arr:"",item:"", quantity:"", category:"",});
-        console.log(res.data+"successfully deleted");
+        //console.log(res.data+"successfully deleted");
         alert("successfully deleted post");
         //console.log(this.state.stock_arr.itemName);
       }
@@ -40,12 +40,12 @@ class PostForm extends Component {
 
 
   
-  getData=id=>{
-    API.getData(id)
+  getDataById=id=>{
+    API.getDataById(id)
       .then(res =>{
         this.setState({ stock_arr:res.data,item:"", quantity:"", category:"",});
-        console.log(res.data);
-        console.log(this.state.stock_arr.itemName);
+        console.log("graaaaaaaaaaab",res.data);
+        //console.log(this.state.stock_arr.itemName);
       }
         
       )
@@ -64,8 +64,8 @@ class PostForm extends Component {
                        category:this.state.category
            } ).then(res=>{console.log(res.data);
              this.setState({stock_id:res.data._id})
-            //console.log(this.state.stock_id);
-            this.getData(this.state.stock_id);
+           // console.log("iddddddddd",this.state.stock_id);
+            this.getDataById(this.state.stock_id);
             
             })
            .catch(err => console.log(err));
