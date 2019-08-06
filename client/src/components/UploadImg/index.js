@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 // import { API_URL } from './config'
 import PostingForm from "../PostingForm"
+import API from '../../utils/API';
 
 class UploadImg extends Component {
   
   state = {
     uploading: false,
-    images: []
+    imageUrl: ""
   }
 
   onChange = e => {
@@ -19,6 +20,7 @@ class UploadImg extends Component {
       formData.append(i, file)
     })
 
+    //sends the img to server
     fetch(`http://localhost:3001/image-upload`, {
       method: 'POST',
       body: formData
@@ -27,16 +29,29 @@ class UploadImg extends Component {
     .then(images => {
       this.setState({ 
         uploading: false,
-        images
-      })
-    })
+        imageUrl: images[0].url
+      });
+    });
+  }
+
+  // submitting this.state.imageURL to the API
+  onSubmit = (e) => {
+    console.log("Submitting");
+    API.saveItem({
+              name: "SomeItemName",
+        description: "SomeDescription",
+        location: "Random location",
+        imageUrl: this.state.imageUrl
+    });
+
   }
 
   render() {
     return (
       <div>
-          <PostingForm onChange={this.onChange}></PostingForm>
+          <PostingForm onChange={this.onChange} image={this.state.imageUrl} onSubmit={this.onSubmit}></PostingForm>
       </div>
+      //adding this.state.imageUrl
     )
   }
 }

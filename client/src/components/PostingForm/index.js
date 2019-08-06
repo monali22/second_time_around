@@ -1,3 +1,8 @@
+
+//-------------------------------------------//
+//---------IS THIS FORM IN USE?------------//
+//-------------------------------------------//
+
 import React from 'react'
 
 const formStyle = {
@@ -14,7 +19,7 @@ const buttonStyle = {
   "width": "20%"
 }
 
-export default function Form({onChange}) {
+export default function Form({onChange, image, onSubmit}) {
   return (
     <div>
       <form style={formStyle}>
@@ -47,7 +52,10 @@ export default function Form({onChange}) {
           <input type="file" id="images" placeholder="Images" multiple  onChange={onChange}/>
         </div>
 
-        <button type="submit" className="btn btn-primary" style={buttonStyle}>Post</button>
+        {/* adding image-url value=image and onClick button = onSubmit*/}
+        <input type="text" id="image-url" value={image} hidden/>
+
+        <button type="submit" className="btn btn-primary" style={buttonStyle} onClick={onSubmit}>Post</button>
 
       </form>
     </div>
