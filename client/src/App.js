@@ -14,10 +14,9 @@ function App() {
     <div>
     <Navbar />
       <Jumbotron/>
-      {/* <UploadImg/> */}
-      <PostForm />
       <Wrapper>
-        <PostCollectCard/>
+        <PostForm />
+        <PostCollectCard />
       </Wrapper>
     </div>
   </Router>
