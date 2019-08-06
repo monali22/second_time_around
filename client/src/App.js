@@ -1,25 +1,41 @@
-import React from 'react';
+import React,{Component} from 'react';
 import UploadImg from "./components/UploadImg";
 import PostForm from './components/PostForm';
+import ItemsDonated from "./components/ItemsDonated";
 import Wrapper from "./components/Wrapper";
-import PostCollectCard from "./components/PostCollectCard";
-import Navbar from "./components/Navbar";
-import Jumbotron from "./components/Jumbotron";
+import { wrap } from 'module';
 
-function App() {
+class App extends Component {
+
+  state={
+    stock:[]
+  }
+  /*updatestock=(newstock)=>{
+    console.log("inside app", newstock);
+    this.setState({stock:newstock});
+      
+    }*/
+  render()
+  {
+
+
   return (
     <div>
-      <Navbar/>
-      <Jumbotron/>
-      <UploadImg/>
+      
+      
+   
       <PostForm />
       <Wrapper>
-        <PostCollectCard/>
+        
+      <ItemsDonated />
       </Wrapper>
+    
+
+      
     </div>
   );
 }
-
+}
 export default App;
 
 

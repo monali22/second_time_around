@@ -25,8 +25,11 @@ var StockSchema = new Schema({
         default:false
     },
     url:{
-        type:String
-    }
+        type:String,
+        default:"img/hj"
+
+    },
+    date: { type: Date, default: Date.now }
 
 });
 
