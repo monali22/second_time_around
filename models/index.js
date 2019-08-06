@@ -1,4 +1,5 @@
 module.exports = {
-    StockData: require("./stockData")
+    StockData: require("./stockData"),
+   UserData: require("./userData")
   };
   

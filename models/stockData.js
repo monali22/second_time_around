@@ -27,6 +27,16 @@ var StockSchema = new Schema({
     url:{
         type:String
     }
+    // },
+    // quantity:{
+    //     type:Number
+    // },
+    // claimed:{
+    //     type:Boolean
+    // },
+    // url:{
+    //     type:String
+    // }
 
 });
 
