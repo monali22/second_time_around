@@ -5,11 +5,14 @@ import Wrapper from "./components/Wrapper";
 import PostCollectCard from "./components/PostCollectCard";
 import Navbar from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron";
+import SignIn from "./SignIn/SignIn"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
+    <Router>
     <div>
-      <Navbar/>
+    <Navbar />
       <Jumbotron/>
       <UploadImg/>
       <PostForm />
@@ -17,6 +20,7 @@ function App() {
         <PostCollectCard/>
       </Wrapper>
     </div>
+  </Router>
   );
 }
 
