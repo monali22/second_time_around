@@ -28,6 +28,16 @@ var StockSchema = new Schema({
         type:String,
         default: "img/hj"
     }
+    // },
+    // quantity:{
+    //     type:Number
+    // },
+    // claimed:{
+    //     type:Boolean
+    // },
+    // url:{
+    //     type:String
+    // }
 
 });
 
