@@ -1,5 +1,5 @@
 module.exports = {
     StockData: require("./stockData"),
-   // UserData: require("./userData")
+   UserData: require("./userData")
   };
   
