@@ -4,7 +4,7 @@ import API from "../../utils/API";
 
 const cardPostion = {
   "float": "left",
-  
+
 }
 
 
@@ -14,7 +14,9 @@ class PostForm extends Component {
   state = {
     item: "",
     quantity: "",
-    category: ""
+    category: "",
+    uploading: false,
+    url: ""
   }
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -26,14 +28,18 @@ class PostForm extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.item && this.state.quantity) {
-      API.savePost({
+      const newPost = {
         itemName: this.state.item,
         quantity: this.state.quantity,
-        category: this.state.category
-      }).then(res => console.log(res))
+        category: this.state.category,
+        url: this.state.url,
+      }
+      console.log("newPost", newPost);
+      API.savePost(
+        newPost
+      ).then(res => console.log(res))
         .catch(err => console.log(err));
     }
-
   };
   render() {
 
@@ -89,7 +95,7 @@ class PostForm extends Component {
               </div>
 
               {/* Upload Image */}
-              <div className="input-group mb-3">
+              {/* <div className="input-group mb-3">
                 <div className="input-group-prepend">
                   <span className="input-group-text" id="inputGroupFileAddon01">Upload Image</span>
                 </div>
@@ -98,7 +104,11 @@ class PostForm extends Component {
                     aria-describedby="inputGroupFileAddon01" />
                   <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
                 </div>
-              </div>
+              </div> */}
+              <div className="form-group">
+          <label >Images: </label>
+          <input type="file" id="images" placeholder="Images" multiple onChange={this.uploadFile} />
+        </div>
 
               </form>
               {/* Submit Button */}
@@ -110,6 +120,30 @@ class PostForm extends Component {
 
     );
   }
+  uploadFile = e => {
+    const files = Array.from(e.target.files)
+    this.setState({ uploading: true })
+  
+    const formData = new FormData()
+  
+    files.forEach((file, i) => {
+      formData.append(i, file)
+    })
+  
+    //sends the img to server
+    fetch(`http://localhost:3001/image-upload`, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(images => {
+        this.setState({
+          uploading: false,
+          url: images[0].url
+        });
+      });
+  }
 }
+
 
 export default PostForm;

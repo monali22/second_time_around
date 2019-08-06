@@ -14,8 +14,6 @@ function App() {
     <div>
     <Navbar />
       <Jumbotron/>
-      {/* <UploadImg/> */}
-      {/* <PostForm /> */}
       <Wrapper>
         <PostForm />
         <PostCollectCard />
@@ -26,5 +24,4 @@ function App() {
 }
 
 export default App;
-
 
