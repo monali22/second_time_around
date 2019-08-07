@@ -9,6 +9,7 @@ import { GoogleLoginButton } from "react-social-login-buttons";
 
 
 
+
 const customStyles = {
   content: {
     top: '50%',
@@ -223,7 +224,7 @@ class Navbar extends React.Component {
                       
                 </div>
 
-                {/* <div style={hidden}><p>heyyyyyysshhs</p></div> */}
+                
 
                 {/* <h2 ref={subtitle => this.subtitle = subtitle}>Register</h2>
                 {/* <button onClick={this.closeModal} style={closeButton} ><i class="fa fa-close"></i></button> */}
