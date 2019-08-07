@@ -21,7 +21,7 @@ class ItemsDonated extends Component{
         API.getData()
           .then(res =>{
             this.setState({ stocks: res.data })
-            this.props.updatestock(this.state.stocks);
+           // this.props.updatestock(this.state.stocks);
             //console.log(res.data);
           }
             
