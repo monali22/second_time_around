@@ -2,20 +2,23 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 
+
+//import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
 const cardPostion = {
   "float": "left",
 }
 
-
-
 class PostForm extends Component {
-
-  state = {
-    item: "",
-    quantity: "",
-    category: "",
-    uploading: false,
-    url: ""
+  
+  state={
+      item:"",
+      quantity:"",
+      category:"",
+      Address:"",
+      stock_id:"",
+      stock_arr:[],
+      uploading: false,
+      url: ""
   }
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -23,27 +26,80 @@ class PostForm extends Component {
       [name]: value
     });
   };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.item && this.state.quantity) {
-      const newPost = {
-        itemName: this.state.item,
-        quantity: this.state.quantity,
-        category: this.state.category,
-        url: this.state.url,
+  deletePost=id=>{
+    if(id !==undefined )
+    {
+      //console.log("inside delete"+id);
+      API.deleteData(id)
+      .then(res =>{
+        this.setState({ stock_arr:"",item:"", quantity:"", category:"",Address:""});
+        //console.log(res.data+"successfully deleted");
+        alert("successfully deleted post");
+        //console.log(this.state.stock_arr.itemName);
       }
-      console.log("newPost", newPost);
-      API.savePost(
-        newPost
-      ).then(res => console.log(res))
-        .catch(err => console.log(err));
-    }
-  };
-  render() {
+        
+      )
+      .catch(err => console.log(err));
+  }
+    
+    };
 
-    return (
-      <div>
+
+  
+  getDataById=id=>{
+    API.getDataById(id)
+      .then(res =>{
+        this.setState({ stock_arr:res.data,item:"", quantity:"", category:"", Address:""});
+        console.log("graaaaaaaaaaab",res.data);
+        //console.log(this.state.stock_arr.itemName);
+      }
+        
+      )
+      .catch(err => console.log(err));
+  };
+    
+
+  
+
+  handleFormSubmit=event=>{
+      event.preventDefault();
+      if(this.state.item && this.state.quantity)
+      {
+        const newPost = {itemName :this.state.item,
+                       quantity:this.state.quantity,
+                       category:this.state.category,
+                       Address:this.state.Address,
+                       url: this.state.url,
+           } 
+           
+           console.log("newPost", newPost);
+           
+           
+           API.savePost( newPost)
+           .then(res => {
+
+            console.log(res.data);
+             this.setState({stock_id:res.data._id}) 
+             this.getDataById(res.data._id)  ; 
+            
+
+
+           }
+           
+           
+           
+           )
+            .catch(err => console.log(err));
+         
+         
+      }
+
+  };
+    render(){
+
+      return (
+        //kim's update 
+        <div>
         <div className="card w-50" style={cardPostion}>
           <div className="card-body">
             <h3 className="card-title sectiontitle">Enter the item you want to donate:</h3>
@@ -57,9 +113,10 @@ class PostForm extends Component {
               </div>
 
               {/* Location: Address */}
-              <div className="formfield form-group">
+              <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Pick up address</label>
-                <input type="text" className="formfield form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="zipcode" />
+                <input type="text" className="form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="Address" value={this.state.Address}
+                  onChange={this.handleInputChange} />
               </div>
 
               {/* Select Quantity */}
@@ -114,35 +171,129 @@ class PostForm extends Component {
               <button type="submit" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
                 this.state.quantity)} onClick={this.handleFormSubmit}>Submit</button>
           </div>
-        </div>
-      </div>
 
-    );
-  }
-  uploadFile = e => {
-    const files = Array.from(e.target.files)
-    this.setState({ uploading: true })
-  
-    const formData = new FormData()
-  
-    files.forEach((file, i) => {
-      formData.append(i, file)
-    })
-  
-    //sends the img to server
-    fetch(`http://localhost:3001/image-upload`, {
-      method: 'POST',
-      body: formData
-    })
-      .then(res => res.json())
-      .then(images => {
-        this.setState({
-          uploading: false,
-          url: images[0].url
-        });
+        </div>
+        <div>  
+          
+          <div className="card" > 
+               
+            <div className="card-body">
+    
+   
+          <title>Your Post</title>
+            <h5>Donating Item and Description:{this.state.stock_arr.itemName}</h5>
+            <h6>Item Qunatity:{this.state.stock_arr.quantity}</h6>
+            <h6>Department:{this.state.stock_arr.category}</h6>
+            <h6>Address:{this.state.stock_arr.Address}</h6>
+            <img src={this.state.url} width="100px" height="100px"></img>
+
+
+            <button type="button" className="btn btn-primary" onClick={() => this.deletePost(this.state.stock_arr._id)}  >delete</button>
+           </div>
+             
+              </div>
+          
+          
+           </div>
+      </div>
+      );
+
+       /* //helan's update
+        <div>
+            <div className="card w-50" style={cardPostion}>
+          <div className="card-body">
+            <h3 className="card-title">Donate Form</h3>
+            <br />
+
+        <form>
+            <div className="form-group">
+                <label htmlFor="Item Name">Enter Item Description</label>
+                <input type="text" className="form-control" id="item_donate"  placeholder="ex. Table" name="item" value={this.state.item} onChange={this.handleInputChange}/>
+            </div>
+            <div className="form-group">
+                <label htmlFor="Quantity">select Item Quantity</label>
+                <select name="quantity" value={this.state.quantity}  onChange={this.handleInputChange} >
+                <option value="choose">choose</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            </div>
+            <div>
+            <label htmlFor="Department">choose Department</label>
+            <select name="category" value={this.state.category}  onChange={this.handleInputChange} >
+                <option value="choose">choose</option>
+                <option value="kitchen">kitchen</option>
+                <option value="Furniture">Furniture</option>
+                <option value="outdoor">outdoor</option>
+                <option value="decor">decor</option>
+            </select>
+            </div>
+            <button type="button" disabled={!(this.state.item && this.state.quantity)}
+                onClick={this.handleFormSubmit}>submit</button>
+              
+              
+        </form>
+        <div>  
+          
+          <div className="card" > 
+               
+            <div className="card-body">
+    
+   
+          <title>Your Post</title>
+            <h5>Donating Item:{this.state.stock_arr.itemName}</h5>
+            <h6>Item Qunatity:{this.state.stock_arr.quantity}</h6>
+            <h6>Department:{this.state.stock_arr.category}</h6>
+            <h6>grab image IMAGE</h6>
+
+
+            <button type="button" className="btn btn-primary" onClick={() => this.deletePost(this.state.stock_arr._id)}  >delete</button>
+           </div>
+             
+              </div>
+          
+          
+           </div>
+       </div>
+      </div>
+      </div>
+    );  
+  */    
+}
+
+uploadFile = e => {
+  const files = Array.from(e.target.files)
+  this.setState({ uploading: true })
+
+  const formData = new FormData()
+
+  files.forEach((file, i) => {
+    formData.append(i, file)
+  })
+
+  //sends the img to server
+  fetch(`http://localhost:3001/image-upload`, {
+    method: 'POST',
+    body: formData
+  })
+    .then(res => res.json())
+    .then(images => {
+      this.setState({
+        uploading: false,
+        url: images[0].url
       });
-  }
+    });
+}
 }
 
 
+
+
+
+
+
+
 export default PostForm;
+

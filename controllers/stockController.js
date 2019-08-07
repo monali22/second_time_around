@@ -8,9 +8,9 @@ module.exports = {
       .then(Data=> res.json(Data))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
+  findById: function(req, res) {
     db.StockData
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
@@ -18,6 +18,13 @@ module.exports = {
     db.StockData
       .findById({ _id: req.params.id })
       .then(dbModel => dbModel.remove())
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findAll: function(req, res) {
+    db.StockData
+      .find(req.query)
+      .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
