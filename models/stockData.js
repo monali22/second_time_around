@@ -10,7 +10,7 @@ var StockSchema = new Schema({
         required: true
     },
     
-    user_id:{
+    Item_id:{
         type:Number
     },
     category:{
@@ -25,18 +25,13 @@ var StockSchema = new Schema({
         default:false
     },
     url:{
-        type:String
-    }
-    // },
-    // quantity:{
-    //     type:Number
-    // },
-    // claimed:{
-    //     type:Boolean
-    // },
-    // url:{
-    //     type:String
-    // }
+        type:String,
+        default:"img/hj"
+
+    },
+    date: { type: Date, default: Date.now },
+    Address:{type:String},
+    
 
 });
 

@@ -1,9 +1,8 @@
-import React from 'react';
-import UploadImg from "./components/UploadImg";
+import React,{Component} from 'react';
 import PostForm from './components/PostForm';
+import ItemsDonated from "./components/ItemsDonated";
 import Wrapper from "./components/Wrapper";
-import PostCollectCard from "./components/PostCollectCard";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar" ;
 import Jumbotron from "./components/Jumbotron";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -13,16 +12,21 @@ function App() {
     <div>
     <Navbar />
       <Jumbotron/>
-      <UploadImg/>
-      <PostForm />
       <Wrapper>
-        <PostCollectCard/>
+        <PostForm />
+      </Wrapper>
+      <Wrapper>
+      <ItemsDonated />
       </Wrapper>
     </div>
   </Router>
   );
 }
 
-export default App;
 
+
+  
+
+
+export default App;
 

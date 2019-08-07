@@ -8,6 +8,15 @@
 }
 
 .maintext {
-    text-transform: uppercase;
-    
+    text-transform: lowercase;
+    font-size: 2cm;
+    letter-spacing: 4px;
+    color: rgb(65, 65, 65);
+    padding: 80px;
+}
+
+.secondarytext{
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    color: rgb(65, 65, 65);
 }
