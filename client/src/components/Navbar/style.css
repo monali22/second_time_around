@@ -3,23 +3,76 @@
   letter-spacing: 4px;
 }
 
-.navstyle{
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
+.Modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background-color: white
 }
 
-.navstylelogo{
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 14px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 18px;
-  color: rgb(65, 65, 65);
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
-.navbutton{
-  color:white;
+.divSide{
+  font-weight: bold;
+  background-image: url("https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-size:300%;
+  color:green;
+  text-align: center;
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  width: 50%;
+  float: left;
 }
+
+.helpSomeone{
+  padding-top: 30%
+}
+
+.loginStuff{
+  overflow: hidden;
+}
+
+.titleInLOgin{
+padding-left: 15%;
+padding-top: 20%;
+}
+
+.subTitle{
+  width: 80%;
+  padding-left: 15%
+}
+
+.socialLoginLine{
+  width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid #000; 
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+   color: gray
+}
+
+.socialLoginLine span { 
+  margin-top: 10%;
+  background:#fff; 
+  padding:0 10px; 
+  color: gray
+}
+
+.footerSign{
+  padding-left: 32%
+}
+
+.verticalLine {
+  border-left:  thin solid gray;
+  margin-right: 1%
+  
+}
+
