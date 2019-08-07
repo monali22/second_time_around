@@ -1,7 +1,7 @@
 import React from 'react';
 import "./itemcardstyle.css";
 const ItemCard=({item})=>{
-    //console.log(item);
+    console.log("item"+item);
     return(
         <div className="card" >
     
