@@ -6,7 +6,7 @@ function Jumbotron() {
         <div className="jumbotron">
             <div className="container">
                 <h2 className="maintext">Reuse, recycle, donate</h2>
-                <h5>Share items you want to donate or claim products you need!</h5>
+                <h5 className="secondarytext">Share items you want to donate or claim products you need!</h5>
             </div>
         </div>
     );
