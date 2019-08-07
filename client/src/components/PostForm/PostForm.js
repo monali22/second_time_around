@@ -9,16 +9,16 @@ const cardPostion = {
 }
 
 class PostForm extends Component {
-  
-  state={
-      item:"",
-      quantity:"",
-      category:"",
-      Address:"",
-      stock_id:"",
-      stock_arr:[],
-      uploading: false,
-      url: ""
+
+  state = {
+    item: "",
+    quantity: "",
+    category: "",
+    Address: "",
+    stock_id: "",
+    stock_arr: [],
+    uploading: false,
+    url: ""
   }
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -26,80 +26,79 @@ class PostForm extends Component {
       [name]: value
     });
   };
-  deletePost=id=>{
-    if(id !==undefined )
-    {
+  deletePost = id => {
+    if (id !== undefined) {
       //console.log("inside delete"+id);
       API.deleteData(id)
-      .then(res =>{
-        this.setState({ stock_arr:"",item:"", quantity:"", category:"",Address:""});
-        //console.log(res.data+"successfully deleted");
-        alert("successfully deleted post");
-        //console.log(this.state.stock_arr.itemName);
-      }
-        
-      )
-      .catch(err => console.log(err));
-  }
-    
-    };
+        .then(res => {
+          this.setState({ stock_arr: "", item: "", quantity: "", category: "", Address: "", url: "" });
+          //console.log(res.data+"successfully deleted");
+          alert("successfully deleted post");
+          //console.log(this.state.stock_arr.itemName);
+        }
+
+        )
+        .catch(err => console.log(err));
+    }
+
+  };
 
 
-  
-  getDataById=id=>{
+
+  getDataById = id => {
     API.getDataById(id)
-      .then(res =>{
-        this.setState({ stock_arr:res.data,item:"", quantity:"", category:"", Address:""});
-        console.log("graaaaaaaaaaab",res.data);
+      .then(res => {
+        this.setState({ stock_arr: res.data, item: "", quantity: "", category: "", Address: "" });
+        console.log("graaaaaaaaaaab", res.data);
         //console.log(this.state.stock_arr.itemName);
       }
-        
+
       )
       .catch(err => console.log(err));
   };
-    
-
-  
-
-  handleFormSubmit=event=>{
-      event.preventDefault();
-      if(this.state.item && this.state.quantity)
-      {
-        const newPost = {itemName :this.state.item,
-                       quantity:this.state.quantity,
-                       category:this.state.category,
-                       Address:this.state.Address,
-                       url: this.state.url,
-           } 
-           
-           console.log("newPost", newPost);
-           
-           
-           API.savePost( newPost)
-           .then(res => {
-
-            console.log(res.data);
-             this.setState({stock_id:res.data._id}) 
-             this.getDataById(res.data._id)  ; 
-            
 
 
-           }
-           
-           
-           
-           )
-            .catch(err => console.log(err));
-         
-         
+
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.item && this.state.quantity) {
+      const newPost = {
+        itemName: this.state.item,
+        quantity: this.state.quantity,
+        category: this.state.category,
+        Address: this.state.Address,
+        url: this.state.url,
       }
 
-  };
-    render(){
+      console.log("newPost", newPost);
 
-      return (
-        //kim's update 
-        <div>
+
+      API.savePost(newPost)
+        .then(res => {
+
+          console.log(res.data);
+          this.setState({ stock_id: res.data._id })
+          this.getDataById(res.data._id);
+
+
+
+        }
+
+
+
+        )
+        .catch(err => console.log(err));
+
+
+    }
+
+  };
+  render() {
+
+    return (
+      //kim's update 
+      <div>
         <div className="card w-50" style={cardPostion}>
           <div className="card-body">
             <h3 className="card-title sectiontitle">Enter the item you want to donate:</h3>
@@ -162,130 +161,64 @@ class PostForm extends Component {
                 </div>
               </div> */}
               <div className="formfield form-group">
-          <label >Include an image: </label>
-          <input type="file" id="images" placeholder="Images" multiple onChange={this.uploadFile} />
-        </div>
+                <label >Include an image: </label>
+                <input type="file" id="images" placeholder="Images" multiple onChange={this.uploadFile} />
+              </div>
 
-              </form>
-              {/* Submit Button */}
-              <button type="submit" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
-                this.state.quantity)} onClick={this.handleFormSubmit}>Submit</button>
+            </form>
+            {/* Submit Button */}
+            <button type="submit" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
+              this.state.quantity)} onClick={this.handleFormSubmit}>Submit</button>
           </div>
 
         </div>
-        <div>  
-          
-          <div className="card" > 
-               
-            <div className="card-body">
-    
-   
-          <h3 className="sectiontitle">Your Post</h3>
-          <hr></hr>
-            <h5 className="formfield" >Donating Item and Description:{this.state.stock_arr.itemName}</h5>
-            <h6 className="formfield" >Item Qunatity:{this.state.stock_arr.quantity}</h6>
-            <h6 className="formfield" >Department:{this.state.stock_arr.category}</h6>
-            <h6 className="formfield" >Address:{this.state.stock_arr.Address}</h6>
-            <img src={this.state.url} width="100px" height="100px"></img>
-            <br></br>
-            <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  >Delete</button>
-           </div>
-             
-              </div>
-          
-          
-           </div>
-      </div>
-      );
-
-       /* //helan's update
         <div>
-            <div className="card w-50" style={cardPostion}>
-          <div className="card-body">
-            <h3 className="card-title">Donate Form</h3>
-            <br />
 
-        <form>
-            <div className="form-group">
-                <label htmlFor="Item Name">Enter Item Description</label>
-                <input type="text" className="form-control" id="item_donate"  placeholder="ex. Table" name="item" value={this.state.item} onChange={this.handleInputChange}/>
+          <div className="card" >
+            <div className="currentpost card-body">
+              <h3 className="sectiontitle">Your Post</h3>
+              <hr></hr>
+              <h5 className="formfield" >Donating Item and Description:{this.state.stock_arr.itemName}</h5>
+              <h6 className="formfield" >Item Qunatity:{this.state.stock_arr.quantity}</h6>
+              <h6 className="formfield" >Department:{this.state.stock_arr.category}</h6>
+              <h6 className="formfield" >Address:{this.state.stock_arr.Address}</h6>
+              <img src={this.state.url} width="100px" height="100px"></img>
+              <br></br>
+              <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  >Delete</button>
             </div>
-            <div className="form-group">
-                <label htmlFor="Quantity">select Item Quantity</label>
-                <select name="quantity" value={this.state.quantity}  onChange={this.handleInputChange} >
-                <option value="choose">choose</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            </div>
-            <div>
-            <label htmlFor="Department">choose Department</label>
-            <select name="category" value={this.state.category}  onChange={this.handleInputChange} >
-                <option value="choose">choose</option>
-                <option value="kitchen">kitchen</option>
-                <option value="Furniture">Furniture</option>
-                <option value="outdoor">outdoor</option>
-                <option value="decor">decor</option>
-            </select>
-            </div>
-            <button type="button" disabled={!(this.state.item && this.state.quantity)}
-                onClick={this.handleFormSubmit}>submit</button>
-              
-              
-        </form>
-        <div>  
-          
-          <div className="card" > 
-               
-            <div className="card-body">
-    
-   
-          <title>Your Post</title>
-            <h5>Donating Item:{this.state.stock_arr.itemName}</h5>
-            <h6>Item Qunatity:{this.state.stock_arr.quantity}</h6>
-            <h6>Department:{this.state.stock_arr.category}</h6>
-            <h6>grab image IMAGE</h6>
+          </div>
 
 
-            <button type="button" className="btn btn-primary" onClick={() => this.deletePost(this.state.stock_arr._id)}  >delete</button>
-           </div>
-             
-              </div>
-          
-          
-           </div>
-       </div>
+        </div>
       </div>
-      </div>
-    );  
-  */    
-}
+    );
 
-uploadFile = e => {
-  const files = Array.from(e.target.files)
-  this.setState({ uploading: true })
 
-  const formData = new FormData()
+  }
 
-  files.forEach((file, i) => {
-    formData.append(i, file)
-  })
+  uploadFile = e => {
+    const files = Array.from(e.target.files)
+    this.setState({ uploading: true })
 
-  //sends the img to server
-  fetch(`http://localhost:3001/image-upload`, {
-    method: 'POST',
-    body: formData
-  })
-    .then(res => res.json())
-    .then(images => {
-      this.setState({
-        uploading: false,
-        url: images[0].url
+    const formData = new FormData()
+
+    files.forEach((file, i) => {
+      formData.append(i, file)
+    })
+
+    //sends the img to server
+    fetch(`http://localhost:3001/image-upload`, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(images => {
+        this.setState({
+          uploading: false,
+          url: images[0].url
+        });
       });
-    });
-}
+  }
 }
 
 

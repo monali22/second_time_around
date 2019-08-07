@@ -15,7 +15,9 @@ function App() {
       <Jumbotron/>
       <Wrapper>
         <PostForm />
-        <ItemsDonated />
+      </Wrapper>
+      <Wrapper>
+      <ItemsDonated />
       </Wrapper>
     </div>
   </Router>

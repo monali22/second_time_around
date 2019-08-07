@@ -1,7 +1,25 @@
-import React from 'react';
-import "./itemcardstyle.css";
-const ItemCard=({item})=>{
-    console.log("item"+item);
+import React ,{Component} from 'react';
+import API from "../utils/API"
+//const ItemCard=({item})=>{
+    //console.log(item);
+    const ItemCard= ({item})=>{
+      console.log(item);
+   const updatePost=(id,claimed)=>{
+
+    //console.log("inside click method");
+    claimed=true;
+    console.log(id,claimed);
+   
+    /*API.updatePost(id,claimed)
+    .then(res => {
+      console.log(res.data);
+    
+    } 
+    )
+     .catch(err => console.log(err));
+*/
+   }
+    
     return(
         <div className="card" >
     
@@ -12,12 +30,14 @@ const ItemCard=({item})=>{
       <p className="formfield card-text">Product:{item.itemName}</p>
       <p className="formfield card-text">Department:{item.category}</p>
       <p className="formfield card-text">Pickup location:{item.Address}</p>
-      <p className="formfield card-text">Posted on:{item.date}</p>
-      <p className="formfield card-text">Items available for 5 days after posting</p>
+      <p className="formfield card-text">Posted date:{item.date}</p>
+      <p>Items available for 5 days after posting</p>
+   
 
-      <a href="#" className="navbutton btn btn-warning my-2 btn-sm">I want it</a>
+      <button type="button"  className="navbutton btn btn-warning my-2 btn-sm" onClick={() => updatePost(item._id,item.claimed)}  >i want it</button>
     </div>
   </div>
-    )
+    );
 }
+    
 export default ItemCard;

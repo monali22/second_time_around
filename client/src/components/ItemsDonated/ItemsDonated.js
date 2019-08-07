@@ -38,12 +38,5 @@ class ItemsDonated extends Component {
       </div>);
   }
 
-
-
-
-
-
-
-
 }
 export default ItemsDonated;

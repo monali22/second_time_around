@@ -11,5 +11,8 @@ router.route("/")
 router.route("/:id")
 .get(stockController.findById)
 .delete(stockController.remove);
+
   module.exports = router;
 
+  router.route("/:id:body")
+  .put(stockController.update);
