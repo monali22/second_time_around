@@ -26,18 +26,10 @@ var StockSchema = new Schema({
     },
     url:{
         type:String,
-        default: "img/hj"
-    }
-    // },
-    // quantity:{
-    //     type:Number
-    // },
-    // claimed:{
-    //     type:Boolean
-    // },
-    // url:{
-    //     type:String
-    // }
+        default:"img/hj"
+
+    },
+    date: { type: Date, default: Date.now }
 
 });
 
