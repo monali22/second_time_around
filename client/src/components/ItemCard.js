@@ -1,6 +1,25 @@
-import React from 'react';
-const ItemCard=({item})=>{
+import React ,{Component} from 'react';
+import API from "../utils/API"
+//const ItemCard=({item})=>{
     //console.log(item);
+    const ItemCard= ({item})=>{
+      console.log(item);
+   const updatePost=(id,claimed)=>{
+
+    //console.log("inside click method");
+    claimed=true;
+    console.log(id,claimed);
+   
+    /*API.updatePost(id,claimed)
+    .then(res => {
+      console.log(res.data);
+    
+    } 
+    )
+     .catch(err => console.log(err));
+*/
+   }
+    
     return(
         <div className="card" >
     
@@ -12,10 +31,12 @@ const ItemCard=({item})=>{
       <p className="card-text">Pickup location:{item.Address}</p>
       <p className="card-text">Posted date:{item.date}</p>
       <p>Items available for 5 days after posting</p>
+   
 
-      <a href="#" className="btn btn-primary">I want it</a>
+      <button type="button"  className="btn btn-primary" onClick={() => updatePost(item._id,item.claimed)}  >i want it</button>
     </div>
   </div>
-    )
+    );
 }
+    
 export default ItemCard;
