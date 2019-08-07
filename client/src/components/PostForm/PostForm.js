@@ -14,6 +14,7 @@ class PostForm extends Component {
       item:"",
       quantity:"",
       category:"",
+      Address:"",
       stock_id:"",
       stock_arr:[],
       uploading: false,
@@ -31,7 +32,7 @@ class PostForm extends Component {
       //console.log("inside delete"+id);
       API.deleteData(id)
       .then(res =>{
-        this.setState({ stock_arr:"",item:"", quantity:"", category:"",});
+        this.setState({ stock_arr:"",item:"", quantity:"", category:"",Address:""});
         //console.log(res.data+"successfully deleted");
         alert("successfully deleted post");
         //console.log(this.state.stock_arr.itemName);
@@ -48,7 +49,7 @@ class PostForm extends Component {
   getDataById=id=>{
     API.getDataById(id)
       .then(res =>{
-        this.setState({ stock_arr:res.data,item:"", quantity:"", category:"",});
+        this.setState({ stock_arr:res.data,item:"", quantity:"", category:"", Address:""});
         console.log("graaaaaaaaaaab",res.data);
         //console.log(this.state.stock_arr.itemName);
       }
@@ -67,6 +68,7 @@ class PostForm extends Component {
         const newPost = {itemName :this.state.item,
                        quantity:this.state.quantity,
                        category:this.state.category,
+                       Address:this.state.Address,
                        url: this.state.url,
            } 
            
@@ -113,7 +115,8 @@ class PostForm extends Component {
               {/* Location: Address */}
               <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Address</label>
-                <input type="text" className="form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="zipcode" />
+                <input type="text" className="form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="Address" value={this.state.Address}
+                  onChange={this.handleInputChange} />
               </div>
 
               {/* Select Quantity */}
@@ -178,10 +181,11 @@ class PostForm extends Component {
     
    
           <title>Your Post</title>
-            <h5>Donating Item:{this.state.stock_arr.itemName}</h5>
+            <h5>Donating Item and Description:{this.state.stock_arr.itemName}</h5>
             <h6>Item Qunatity:{this.state.stock_arr.quantity}</h6>
             <h6>Department:{this.state.stock_arr.category}</h6>
-            <h6>grab image IMAGE</h6>
+            <h6>Address:{this.state.stock_arr.Address}</h6>
+            <img src={this.state.url} width="100px" height="100px"></img>
 
 
             <button type="button" className="btn btn-primary" onClick={() => this.deletePost(this.state.stock_arr._id)}  >delete</button>
