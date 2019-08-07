@@ -1,0 +1,22 @@
+.jumbotron {
+    font-weight: bold;
+    background-image: url("https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-size: cover;
+    color:black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.maintext {
+    text-transform: lowercase;
+    font-size: 2cm;
+    letter-spacing: 4px;
+    color: rgb(65, 65, 65);
+    padding: 80px;
+}
+
+.secondarytext{
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    color: rgb(65, 65, 65);
+}
