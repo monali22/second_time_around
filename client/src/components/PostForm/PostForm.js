@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-//import "./style.css";
+import "./style.css";
 import API from "../../utils/API";
 
 const cardPostion = {
   "float": "left",
-
 }
 
 
@@ -47,25 +46,25 @@ class PostForm extends Component {
       <div>
         <div className="card w-50" style={cardPostion}>
           <div className="card-body">
-            <h3 className="card-title">Donate Form</h3>
-            <br />
+            <h3 className="card-title sectiontitle">Enter the item you want to donate:</h3>
+            <hr></hr>
             <form>
               {/* Input Item Name */}
-              <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Enter Item Description</label>
-                <input type="text" className="form-control" placeholder="ex. Table" name="item" value={this.state.item}
+              <div className="formfield form-group">
+                <label htmlFor="exampleFormControlInput1">Product</label>
+                <input type="text" className="formfield form-control" placeholder="ex. Table" name="item" value={this.state.item}
                   onChange={this.handleInputChange} />
               </div>
 
               {/* Location: Address */}
-              <div className="form-group">
-                <label htmlFor="exampleFormControlInput1">Address</label>
-                <input type="text" className="form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="zipcode" />
+              <div className="formfield form-group">
+                <label htmlFor="exampleFormControlInput1">Pick up address</label>
+                <input type="text" className="formfield form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="zipcode" />
               </div>
 
               {/* Select Quantity */}
-              <div className="form-group">
-                <label htmlFor="exampleFormControlSelect1">Select Quantity</label>
+              <div className="formfield form-group">
+                <label htmlFor="exampleFormControlSelect1">Select quantity</label>
                 <select className="form-control" id="exampleFormControlSelect1" name="quantity" value={this.state.quantity}
                   onChange={this.handleInputChange}>
                   <option value="Choose">Choose...</option>
@@ -78,8 +77,8 @@ class PostForm extends Component {
               </div>
 
               {/* Select Category */}
-              <div className="form-group">
-                <label htmlFor="inputGroupSelect01">Category</label>
+              <div className="formfield form-group">
+                <label htmlFor="inputGroupSelect01">Select category</label>
                 <select className="custom-select" id="inputGroupSelect03" name="category" value={this.state.category}
                   onChange={this.handleInputChange} aria-label="Example select with button addon">
                   <option value="Choose">Choose...</option>
@@ -105,14 +104,14 @@ class PostForm extends Component {
                   <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
                 </div>
               </div> */}
-              <div className="form-group">
-          <label >Images: </label>
+              <div className="formfield form-group">
+          <label >Include an image: </label>
           <input type="file" id="images" placeholder="Images" multiple onChange={this.uploadFile} />
         </div>
 
               </form>
               {/* Submit Button */}
-              <button type="submit" className="btn btn-primary" value="Submit" disabled={!(this.state.item &&
+              <button type="submit" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
                 this.state.quantity)} onClick={this.handleFormSubmit}>Submit</button>
           </div>
         </div>

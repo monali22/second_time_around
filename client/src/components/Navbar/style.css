@@ -3,11 +3,23 @@
   letter-spacing: 4px;
 }
 
-.jumbotron {
-  font-weight: bold;
-  background-image: url("");
-  background-size: cover;
-  color:black;
-  text-align: center;
+.navstyle{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navstylelogo{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  color: rgb(65, 65, 65);
+}
+
+.navbutton{
+  color:white;
   font-family: Arial, Helvetica, sans-serif;
 }

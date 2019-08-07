@@ -16,7 +16,7 @@ function App() {
       <Jumbotron/>
       <Wrapper>
         <PostForm />
-        <PostCollectCard />
+        {/* <PostCollectCard /> */}
       </Wrapper>
     </div>
   </Router>
