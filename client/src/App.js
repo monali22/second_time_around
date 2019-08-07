@@ -3,41 +3,31 @@ import UploadImg from "./components/UploadImg";
 import PostForm from './components/PostForm';
 import ItemsDonated from "./components/ItemsDonated";
 import Wrapper from "./components/Wrapper";
-import { wrap } from 'module';
+import Navbar from "./components/Navbar" ;
+import Jumbotron from "./components/Jumbotron";
+import SignIn from "./SignIn/SignIn"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-class App extends Component {
-
-  state={
-    stock:[]
-  }
-  /*updatestock=(newstock)=>{
-    console.log("inside app", newstock);
-    this.setState({stock:newstock});
-      
-    }*/
-  render()
-  {
-
-
+function App() {
   return (
-    /*<Router>*/
+    <Router>
     <div>
-      
-      
-   
-      <PostForm />
+    <Navbar />
+      <Jumbotron/>
       <Wrapper>
-        
-      <ItemsDonated />
+        <PostForm />
+        <ItemsDonated />
+       
       </Wrapper>
-    
-
-      
     </div>
- /* </Router> */
+  </Router>
   );
 }
-}
-export default App;
 
+
+
+  
+
+
+export default App;
 

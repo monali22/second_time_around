@@ -1,9 +1,9 @@
 const router = require("express").Router();
 const freeItemsController = require("../../controllers/freeItemsController");
 
-// Mapping /freeItems/ to "home"
+// Mapping /api/freeItems/ to "home"
 router.route("/")
-    .get(freeItemsController.home);
-
+    .get(freeItemsController.home)
+    .post(freeItemsController.add);
 
 module.exports = router;
