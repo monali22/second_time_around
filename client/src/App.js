@@ -1,5 +1,4 @@
 import React,{Component} from 'react';
-import UploadImg from "./components/UploadImg";
 import PostForm from './components/PostForm';
 import ItemsDonated from "./components/ItemsDonated";
 import Wrapper from "./components/Wrapper";
@@ -17,7 +16,6 @@ function App() {
       <Wrapper>
         <PostForm />
         <ItemsDonated />
-       
       </Wrapper>
     </div>
   </Router>
