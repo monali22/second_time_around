@@ -113,7 +113,7 @@ class PostForm extends Component {
               </div>
 
               {/* Location: Address */}
-              <div className="form-group">
+              <div className="formfield form-group">
                 <label htmlFor="exampleFormControlInput1">Pick up address</label>
                 <input type="text" className="form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="Address" value={this.state.Address}
                   onChange={this.handleInputChange} />
@@ -180,15 +180,15 @@ class PostForm extends Component {
             <div className="card-body">
     
    
-          <title>Your Post</title>
-            <h5>Donating Item and Description:{this.state.stock_arr.itemName}</h5>
-            <h6>Item Qunatity:{this.state.stock_arr.quantity}</h6>
-            <h6>Department:{this.state.stock_arr.category}</h6>
-            <h6>Address:{this.state.stock_arr.Address}</h6>
+          <h3 className="sectiontitle">Your Post</h3>
+          <hr></hr>
+            <h5 className="formfield" >Donating Item and Description:{this.state.stock_arr.itemName}</h5>
+            <h6 className="formfield" >Item Qunatity:{this.state.stock_arr.quantity}</h6>
+            <h6 className="formfield" >Department:{this.state.stock_arr.category}</h6>
+            <h6 className="formfield" >Address:{this.state.stock_arr.Address}</h6>
             <img src={this.state.url} width="100px" height="100px"></img>
-
-
-            <button type="button" className="btn btn-primary" onClick={() => this.deletePost(this.state.stock_arr._id)}  >delete</button>
+            <br></br>
+            <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  >Delete</button>
            </div>
              
               </div>
