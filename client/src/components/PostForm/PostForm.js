@@ -73,9 +73,20 @@ class PostForm extends Component {
            console.log("newPost", newPost);
            
            
-           API.savePost(
-            newPost
-          ).then(res => console.log(res))
+           API.savePost( newPost)
+           .then(res => {
+
+            console.log(res.data);
+             this.setState({stock_id:res.data._id}) 
+             this.getDataById(res.data._id)  ; 
+            
+
+
+           }
+           
+           
+           
+           )
             .catch(err => console.log(err));
          
          
@@ -247,29 +258,38 @@ class PostForm extends Component {
     );  
   */    
 }
+
+uploadFile = e => {
+  const files = Array.from(e.target.files)
+  this.setState({ uploading: true })
+
+  const formData = new FormData()
+
+  files.forEach((file, i) => {
+    formData.append(i, file)
+  })
+
+  //sends the img to server
+  fetch(`http://localhost:3001/image-upload`, {
+    method: 'POST',
+    body: formData
+  })
+    .then(res => res.json())
+    .then(images => {
+      this.setState({
+        uploading: false,
+        url: images[0].url
+      });
+    });
 }
+}
+
+
+
+
+
+
+
 
 export default PostForm;
 
-/*<div>  
-          
-<div className="card" > 
-     
-  <div className="card-body">
-
-
-         <title>Your Post</title>
-          <h5>Donating Item:{this.state.stock_arr.itemName}</h5>
-          <h6>Item Qunatity:{this.state.stock_arr.quantity}</h6>
-          <h6>Department:{this.state.stock_arr.category}</h6>
-          <h6>grab image IMAGE</h6>
-
-
-  <button type="button" className="btn btn-primary" onClick={() => this.deletePost(this.state.stock_arr._id)}  >delete</button>
- </div>
-   
-    </div>
-
-
- </div>
- */
