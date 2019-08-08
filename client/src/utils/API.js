@@ -22,6 +22,11 @@ export default{
     },
     getEmail:function(msg){
       return axios.post("http://localhost:3001/api/freeItems",msg);
+    },
+    saveUser : function(userData){
+      return axios.post("http://localhost:3001/api/user",userData);
+    },
+    updateUserData:function(name,data){
+      return axios.put("http://localhost:3001/api/user/:"+name,{data});
     }
-   
 };

@@ -42,6 +42,7 @@ class PostForm extends Component {
   };
 
   getDataById = id => {
+    console.log(localStorage.getItem("name"));
     API.getDataById(id)
       .then(res => {
         this.setState({ stock_arr: res.data, item: "", quantity: "", category: "", Address: "" });
@@ -61,6 +62,7 @@ class PostForm extends Component {
         category: this.state.category,
         Address: this.state.Address,
         url: this.state.url,
+        user_id:localStorage.getItem('nameId')
       }
       console.log("newPost", newPost);
       API.savePost(newPost)
@@ -72,6 +74,7 @@ class PostForm extends Component {
         .catch(err => console.log(err));
     }
 
+    
   };
 
   render() {

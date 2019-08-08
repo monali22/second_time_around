@@ -35,7 +35,11 @@ var StockSchema = new Schema({
         type: Date,
          default: Date.now(),
           index: { expires: '7200m' },
-       }
+       },
+    user_id: {
+        type:String,
+        required:true
+    }
     
 
 });
