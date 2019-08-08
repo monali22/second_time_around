@@ -107,19 +107,19 @@ class Navbar extends React.Component {
                 Search
             </button>
 
-              {
+              {/* {
 
                 (localStorage.getItem("nameId").length!=0) ? (
 
                   <SignOutButton refId={this.handleRef}/>
 
-                ) : (
+                ) : ( */}
 
                     <LoginButton refId={this.handleRef}/>
-
+{/* 
                   )
 
-              }
+              } */}
 
             </form>
           </div>
