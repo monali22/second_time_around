@@ -13,7 +13,13 @@ module.exports = {
     db.UserData.create(req.body)
       .then(Data=> res.json(Data))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  update: function(req, res) {
+        db.UserData
+          .findOneAndUpdate({_id: req.params.name},{$push: {post_data:req.body}})
+          .then(dbModel => res.json(dbModel))
+          .catch(err => res.status(422).json(err));
+      }
 //   },
 //   update: function(req, res) {
 //     db.StockData
