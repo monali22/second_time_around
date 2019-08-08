@@ -20,6 +20,9 @@ export default{
     saveItem: function(item) {
       return axios.post("http://localhost:3001/api/freeItems", item);
     },
+    getEmail:function(msg){
+      return axios.post("http://localhost:3001/api/freeItems",msg);
+    },
     saveUser : function(userData){
       return axios.post("http://localhost:3001/api/user",userData);
     },

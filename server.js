@@ -1,5 +1,5 @@
 const express = require("express");
-
+//const Nexmo=require("nexmo");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const cloudinary = require('cloudinary')
@@ -45,7 +45,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/secondturnaround");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/secondturnaround2");
 
 // Start the API server
 app.listen(PORT, function () {
