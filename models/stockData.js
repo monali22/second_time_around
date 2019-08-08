@@ -29,8 +29,13 @@ var StockSchema = new Schema({
         default:"img/hj"
 
     },
-    date: { type: Date, default: Date.now },
+    date: { type: Date, default: Date.now() },
     Address:{type:String},
+    expireAt: {
+        type: Date,
+         default: Date.now(),
+          index: { expires: '7200m' },
+       }
     
 
 });

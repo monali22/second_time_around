@@ -19,6 +19,9 @@ export default{
 // request the information to send it to the server
     saveItem: function(item) {
       return axios.post("http://localhost:3001/api/freeItems", item);
+    },
+    getEmail:function(msg){
+      return axios.post("http://localhost:3001/api/freeItems",msg);
     }
    
 };

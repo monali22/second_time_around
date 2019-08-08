@@ -187,7 +187,7 @@ class PostForm extends Component {
               <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  >Delete</button>
             </div>
           </div>
-
+               
 
         </div>
       </div>
