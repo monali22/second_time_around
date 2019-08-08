@@ -32,19 +32,19 @@ import API from "../utils/API"
         <div className="card" >
     ​
           <div className="card-body">
-            <h5 className="sectiontitle card-title">Catalog</h5>
+            <h5 className="sectiontitle card-title">{this.props.item.itemName}</h5>
             <hr></hr>
             <img src={this.props.item.url} width="100px" height="100px"></img>
-            <p className="formfield card-text">Product:{this.props.item.itemName}</p>
-            <p className="formfield card-text">Department:{this.props.item.category}</p>
+          
+          
             <p className="formfield card-text">Pickup location:{this.props.item.Address}</p>
             <p className="formfield card-text">Posted date:{this.props.item.date}</p>
             <p>Items available for 5 days after posting</p>
     ​
             {/*<!-- Button trigger modal -->*/}
-            <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter"   >i want it</button>
+            <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"   >i want it</button>
             {/*<!-- Modal -->*/}
-            <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog"
+            <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog"
               aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">

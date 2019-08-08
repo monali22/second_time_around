@@ -4,9 +4,9 @@ import API from "../../utils/API";
 
 
 //import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
-const cardPostion = {
-  "float": "left",
-}
+// const cardPostion = {
+//   "float": "left",
+// }
 
 class PostForm extends Component {
 
@@ -36,14 +36,10 @@ class PostForm extends Component {
           alert("successfully deleted post");
           //console.log(this.state.stock_arr.itemName);
         }
-
         )
         .catch(err => console.log(err));
     }
-
   };
-
-
 
   getDataById = id => {
     API.getDataById(id)
@@ -52,13 +48,9 @@ class PostForm extends Component {
         console.log("graaaaaaaaaaab", res.data);
         //console.log(this.state.stock_arr.itemName);
       }
-
       )
       .catch(err => console.log(err));
   };
-
-
-
 
   handleFormSubmit = event => {
     event.preventDefault();
@@ -70,38 +62,25 @@ class PostForm extends Component {
         Address: this.state.Address,
         url: this.state.url,
       }
-
       console.log("newPost", newPost);
-
-
       API.savePost(newPost)
         .then(res => {
-
           console.log(res.data);
           this.setState({ stock_id: res.data._id })
           this.getDataById(res.data._id);
-
-
-
-        }
-
-
-
-        )
+        })
         .catch(err => console.log(err));
-
-
     }
 
   };
+
   render() {
 
     return (
-      //kim's update 
       <div>
-        <div className="card w-50" style={cardPostion}>
-          <div className="card-body">
-            <h3 className="card-title sectiontitle">Enter the item you want to donate:</h3>
+        <div className="">
+          <div className="">
+            <h3 id="postitemform" className="card-title sectiontitle">Enter the item you want to donate:</h3>
             <hr></hr>
             <form>
               {/* Input Item Name */}
@@ -110,14 +89,12 @@ class PostForm extends Component {
                 <input type="text" className="formfield form-control" placeholder="ex. Table" name="item" value={this.state.item}
                   onChange={this.handleInputChange} />
               </div>
-
               {/* Location: Address */}
               <div className="formfield form-group">
                 <label htmlFor="exampleFormControlInput1">Pick up address</label>
                 <input type="text" className="form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="Address" value={this.state.Address}
                   onChange={this.handleInputChange} />
               </div>
-
               {/* Select Quantity */}
               <div className="formfield form-group">
                 <label htmlFor="exampleFormControlSelect1">Select quantity</label>
@@ -131,7 +108,6 @@ class PostForm extends Component {
                   <option value="5">5</option>
                 </select>
               </div>
-
               {/* Select Category */}
               <div className="formfield form-group">
                 <label htmlFor="inputGroupSelect01">Select category</label>
@@ -148,43 +124,44 @@ class PostForm extends Component {
                   <option value="Other">Other</option>
                 </select>
               </div>
-
-              {/* Upload Image */}
-              {/* <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                  <span className="input-group-text" id="inputGroupFileAddon01">Upload Image</span>
-                </div>
-                <div className="custom-file" onClick={this.handleFormSubmit}>
-                  <input type="file" className="custom-file-input" id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01" />
-                  <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
-                </div>
-              </div> */}
               <div className="formfield form-group">
                 <label >Include an image: </label>
                 <input type="file" id="images" placeholder="Images" multiple onChange={this.uploadFile} />
               </div>
-
             </form>
-            {/* Submit Button */}
-            <button type="submit" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
+            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
               this.state.quantity)} onClick={this.handleFormSubmit}>Submit</button>
           </div>
-
         </div>
         <div>
-
-          <div className="card" >
-            <div className="currentpost card-body">
-              <h3 className="sectiontitle">Your Post</h3>
-              <hr></hr>
-              <h5 className="formfield" >Donating Item and Description:{this.state.stock_arr.itemName}</h5>
-              <h6 className="formfield" >Item Qunatity:{this.state.stock_arr.quantity}</h6>
-              <h6 className="formfield" >Department:{this.state.stock_arr.category}</h6>
-              <h6 className="formfield" >Address:{this.state.stock_arr.Address}</h6>
-              <img src={this.state.url} width="100px" height="100px"></img>
-              <br></br>
-              <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  >Delete</button>
+          <div>
+            {/*<!-- Modal -->*/}
+            <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog"
+              aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered" role="document">
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h5 className="modal-title" id="exampleModalCenterTitle">Review and share!</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body">
+                    <h3 className="sectiontitle">Your Post</h3>
+                    <hr></hr>
+                    <h5 className="formfield" >Product Name:{this.state.stock_arr.itemName}</h5>
+                    <h6 className="formfield" >Item quantity:{this.state.stock_arr.quantity}</h6>
+                    <h6 className="formfield" >Department:{this.state.stock_arr.category}</h6>
+                    <h6 className="formfield" >Address:{this.state.stock_arr.Address}</h6>
+                    <img src={this.state.url} width="100px" height="100px"></img>
+                    <br></br>
+                    <div className="modal-footer">
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  data-dismiss="modal">Delete</button>
+                      <button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
                
@@ -192,8 +169,6 @@ class PostForm extends Component {
         </div>
       </div>
     );
-
-
   }
 
   uploadFile = e => {
@@ -220,12 +195,6 @@ class PostForm extends Component {
       });
   }
 }
-
-
-
-
-
-
 
 
 export default PostForm;
