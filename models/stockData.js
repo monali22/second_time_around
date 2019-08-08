@@ -31,6 +31,10 @@ var StockSchema = new Schema({
     },
     date: { type: Date, default: Date.now },
     Address:{type:String},
+    user_id: {
+        type:String,
+        required:true
+    }
     
 
 });
