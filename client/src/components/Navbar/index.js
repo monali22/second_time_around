@@ -41,60 +41,7 @@ import SignOutButton from "../SignOutButton"
 
 class Navbar extends React.Component {
 
-  state = {
-    isLoggedIn: false
-  }
-
-  // printConsole() {
-  //   console.log("loff");
-  // }
-  // state = {
-  //   email: "",
-  //   uname: "",
-  //   password: "",
-  //   modalIsOpen: false,
-  //   facebook: '2334014023351700',
-  //   google:
-  //     '801055399463-0buo8uiukhiial91079gnd8jf5h368p2.apps.googleusercontent.com',
-  //     isLoggedIn : false
-
-  // };
-
-  // // this.openModal = this.openModal.bind(this);
-  // // this.afterOpenModal = this.afterOpenModal.bind(this);
-  // // this.closeModal = this.closeModal.bind(this);
-
-
-  // openModal = (e) => {
-  //   e.preventDefault();
-  //   this.setState({ modalIsOpen: true });
-  // }
-
-  // afterOpenModal = () => {
-  //   // references are now sync'd and can be accessed.
-  //   this.subtitle.style.color = 'blue';
-  //   this.subtitle.style.textAlign = "center";
-  //   this.subBtn.style.backgroundColor = "blue";
-  //   this.subBtn.style.color = "white";
-  //   this.subBtn.style.marginLeft = "40%";
-
-
-  // }
-
-  // closeModal = () => {
-  //   this.setState({ modalIsOpen: false });
-  // }
-  // postData = (e) => {
-  //   e.preventDefault();
-  //   console.log(this.state);
-  // }
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   console.log(event.target);
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
+  
 
   ifLoginClicked = () => {
 
@@ -117,19 +64,15 @@ class Navbar extends React.Component {
   handleRef = (val) =>{
     {localStorage.setItem("nameId",val)}
   }
-
-
-
+  
   render() {
-
-
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light">
           <a className="navstylelogo navbar-brand logo" href="#">
             Second time around
         </a>
-          {/* <img src={require('./logo.png')} height="60" class="d-inline-block align-top" alt="secondtime"/> */}
+          {/* <img className="navstylelogo navbar-brand logo" src={require('./logo.png')} height="80" class="d-inline-block align-top" alt="secondtime"/> */}
           <button
             className="navbar-toggler"
             data-toggle="collapse"
@@ -144,32 +87,14 @@ class Navbar extends React.Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <a className="navstyle nav-link" href="#">
-                  Home <span className="sr-only">(current)</span>
+                  {/* Home <span className="sr-only">(current)</span> */}
                 </a>
               </li>
               <li className="navstyle nav-item">
                 <a className="nav-link" href="#">
-                  Donate
+                  {/* Donate */}
               </a>
               </li>
-              {/* <li className="navstyle nav-item dropdown">
-                <a
-                  className="navstyle nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Profile
-              </a>
-                <div className="navstyle dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="navstyle dropdown-item" href="#">
-                    Sign out
-                </a>
-                </div>
-              </li> */}
             </ul>
             <form className="form-inline my-2 my-lg-0">
               <input

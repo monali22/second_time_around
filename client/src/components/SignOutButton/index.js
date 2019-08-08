@@ -2,7 +2,7 @@ import React from 'react'
 
 class SignOutButton extends React.Component {
     handleLogout=()=>{
-        {localStorage.setItem("nameId","")}
+        {localStorage.clear()}
         this.props.refId(localStorage.getItem("nameId"))
     }
     render(){
