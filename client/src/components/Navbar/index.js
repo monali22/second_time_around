@@ -8,7 +8,6 @@ import { FacebookLoginButton } from "react-social-login-buttons";
 import { GoogleLoginButton } from "react-social-login-buttons";
 
 
-
 const customStyles = {
   content: {
     top: '50%',
@@ -19,9 +18,6 @@ const customStyles = {
     transform: 'translate(-50%, -50%)',
     height: '100%',
     width: '70%',
-
-
-
   }
 };
 
@@ -29,11 +25,6 @@ const customStyles = {
 const styleLogIn = {
   "marginLeft": "1px"
 }
-
-
-
-
-
 
 
 Modal.setAppElement('#main')
@@ -52,8 +43,6 @@ class Navbar extends React.Component {
     facebook: '345443186398494',
     google:
       '801055399463-0buo8uiukhiial91079gnd8jf5h368p2.apps.googleusercontent.com',
-    
-
   };
 
   // this.openModal = this.openModal.bind(this);
@@ -73,8 +62,6 @@ class Navbar extends React.Component {
     this.subBtn.style.backgroundColor = "blue";
     this.subBtn.style.color = "white";
     this.subBtn.style.marginLeft = "40%";
-
-
   }
 
   closeModal = () => {
@@ -92,20 +79,14 @@ class Navbar extends React.Component {
     });
   };
 
- 
-
-  
-
   render() {
-
-
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light">
           <a className="navstylelogo navbar-brand logo" href="#">
             Second time around
         </a>
-          {/* <img src={require('./logo.png')} height="60" class="d-inline-block align-top" alt="secondtime"/> */}
+          {/* <img className="navstylelogo navbar-brand logo" src={require('./logo.png')} height="80" class="d-inline-block align-top" alt="secondtime"/> */}
           <button
             className="navbar-toggler"
             data-toggle="collapse"
@@ -120,32 +101,14 @@ class Navbar extends React.Component {
             <ul className="navbar-nav mr-auto">
               <li className="nav-item active">
                 <a className="navstyle nav-link" href="#">
-                  Home <span className="sr-only">(current)</span>
+                  {/* Home <span className="sr-only">(current)</span> */}
                 </a>
               </li>
               <li className="navstyle nav-item">
                 <a className="nav-link" href="#">
-                  Donate
+                  {/* Donate */}
               </a>
               </li>
-              {/* <li className="navstyle nav-item dropdown">
-                <a
-                  className="navstyle nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Profile
-              </a>
-                <div className="navstyle dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="navstyle dropdown-item" href="#">
-                    Sign out
-                </a>
-                </div>
-              </li> */}
             </ul>
             <form className="form-inline my-2 my-lg-0">
               <input
@@ -244,8 +207,6 @@ class Navbar extends React.Component {
 
                   <button type="submit" className="btn btn-default" ref={subBtn => this.subBtn = subBtn} onClick={this.postData}>Submit</button>
                 </form> */}
-
-
               </Modal>
             </form>
           </div>
