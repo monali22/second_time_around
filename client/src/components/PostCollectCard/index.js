@@ -2,32 +2,6 @@ import React from 'react';
 import "./style.css";
 
 function PostCollectCard() {
-    // Setting the componet's initial state
-    // state = {
-    //     name: "",
-    //     date: "",
-    //     time: "",
-    //     message: "",
-
-    // };
-
-    // // handle any changes to the input fields
-    // handleInputChange = event => {
-    //     // Getting the value and name of the input which triggered the change
-    //     const { name, value } = event.target;
-
-    //     // Set the state for the appropriate input field
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
-
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-
-    //     this.setState({ name: "" });
-    // };
-
 
     return (
         <div>
