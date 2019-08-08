@@ -5,6 +5,8 @@ import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar" ;
 import Jumbotron from "./components/Jumbotron";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SimpleMap from './components/SimpleMap';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
       <Wrapper>
       <ItemsDonated />
       </Wrapper>
+      <SimpleMap/>
     </div>
   </Router>
   );
