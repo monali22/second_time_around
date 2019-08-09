@@ -62,7 +62,7 @@ class PostForm extends Component {
         category: this.state.category,
         Address: this.state.Address,
         url: this.state.url,
-        user_id:localStorage.getItem('nameId')
+        user_id: localStorage.getItem('nameId')
       }
       console.log("newPost", newPost);
       API.savePost(newPost)
@@ -73,8 +73,6 @@ class PostForm extends Component {
         })
         .catch(err => console.log(err));
     }
-
-    
   };
 
   render() {
@@ -167,8 +165,6 @@ class PostForm extends Component {
               </div>
             </div>
           </div>
-               
-
         </div>
       </div>
     );
@@ -198,7 +194,6 @@ class PostForm extends Component {
       });
   }
 }
-
 
 export default PostForm;
 
