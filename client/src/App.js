@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
-import PostForm from './components/PostForm';
-import ItemsDonated from "./components/ItemsDonated";
-import Wrapper from "./components/Wrapper";
+import React from "react";
 import Navbar from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron";
-import CardWrapper from "./components/CardWrapper";
+import Footer from "./components/Footer";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SimpleMap from './components/SimpleMap';
-import MapWrapper from './components/MapWrapper';
+import Profile from "./pages/Profile";
+import Donate from "./pages/Donate";
+import Home from "./pages/Home";
+// import React, { Component } from 'react';
+// import PostForm from './components/PostForm';
+// import ItemsDonated from "./components/ItemsDonated";
+// import Wrapper from "./components/Wrapper";
+// import CardWrapper from "./components/CardWrapper";
+// import PostCollectCard from './components/PostCollectCard';
+
 
 function App() {
   return (
@@ -15,15 +20,10 @@ function App() {
       <div>
         <Navbar />
         <Jumbotron />
-        <CardWrapper>
-          <ItemsDonated />
-        </CardWrapper>
-        <Wrapper>
-          <PostForm />
-        </Wrapper>
-        <MapWrapper>
-          <SimpleMap />
-        </MapWrapper>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/donate" component={Donate} />
+        <Footer/>
       </div>
     </Router>
   );
