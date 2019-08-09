@@ -216,9 +216,9 @@ function Jumbotron() {
     return (
         <div className="jumbotron">
             <div className="container">
-                <h2 className="maintext">Reuse, recycle, donate</h2>
-                <a href="#postitemform"><button type="button" className="navbutton btn btn-warning btn-lg">Donate</button></a>
-                <h5 className="secondarytext">Share items you want to donate or claim products you need!</h5>
+                <h2 className="maintext">Reduce, Reuse, Recycle</h2>
+                <a href="/donate"><button type="button" className="navbutton btn btn-warning btn-lg">Donate</button></a>
+                <h5 className="secondarytext">Share items you want to donate or claim products you need for free!</h5>
             </div>
         </div>
     );
