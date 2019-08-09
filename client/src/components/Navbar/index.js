@@ -85,7 +85,7 @@ class Navbar extends React.Component {
               </li>
             </ul>
 
-            <a href="/profile"><button className="navbutton btn btn-warning my-2 btn-sm">Profile</button></a>
+            <a href="/profile"><button className="navbuttonprofile btn btn-warning my-2 btn-sm">Profile</button></a>
               
               {(localStorage.getItem("nameId")!==null)?<SignOutButton />:<LoginButton />}
           </div>
