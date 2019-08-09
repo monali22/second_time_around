@@ -60,17 +60,7 @@ class ItemCard extends Component {
                         placeholder="Enter Number" name="number" />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="InputDate">Date</label>
-                      <input type="date" className="form-control" id="InputDate" aria-describedby="Date"
-                        placeholder="Enter DD/MM/YYYY" />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="InputTime">ETA of Pick Up</label>
-                      <input type="time" className="form-control" id="InputTime" aria-describedby="Time"
-                        placeholder="Enter HH:MM " />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="FormControlTextarea">Message</label>
+                      <label htmlFor="FormControlTextarea">Message | Please specify the ETA of pick up</label>
                       <textarea className="form-control" id="FormControlTextarea" rows=""
                         placeholder="Enter optional message to user"></textarea>
                     </div>

@@ -21,21 +21,21 @@ class Navbar extends React.Component {
     this.setState({ isLoggedIn: false });
   }
 
-  logInInfo =(val) =>{
-    console.log("hurrat  "+val);
+  logInInfo = (val) => {
+    console.log("hurrat  " + val);
   }
 
-  handleRef = (val) =>{
-    {localStorage.setItem("nameId",val)}
+  handleRef = (val) => {
+    { localStorage.setItem("nameId", val) }
   }
-  
+
   render() {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light">
 
-        <Link className="navstylelogo navbar-brand logo" to="/">
-        Second time around
+          <Link className="navstylelogo navbar-brand logo" to="/">
+            Second time around
       </Link>
 
 
@@ -44,7 +44,7 @@ class Navbar extends React.Component {
         </a> */}
           {/* <img className="navstylelogo navbar-brand logo" src={require('./logo.png')} height="80" class="d-inline-block align-top" alt="secondtime"/> */}
           <div>
-        <ul className="navbar-nav">
+            {/* <ul className="navbar-nav">
           <li className="nav-item">
             <Link
               to="/profile"
@@ -57,8 +57,8 @@ class Navbar extends React.Component {
               Profile
             </Link>
           </li>
-        </ul>
-      </div>
+        </ul> */}
+          </div>
           <button
             className="navbar-toggler"
             data-toggle="collapse"
@@ -79,21 +79,30 @@ class Navbar extends React.Component {
               <li className="navstyle nav-item">
                 <a className="nav-link" href="#">
                   {/* Donate */}
-              </a>
+                </a>
               </li>
             </ul>
             <form className="form-inline my-2 my-lg-0">
               <input
                 className="navstyle form-control mr-sm-2"
                 type="search"
-                // placeholder="Search"
+                placeholder="Search"
                 aria-label="Search"
               />
-              <button className="navbutton btn btn-warning my-2 btn-sm" type="submit">
-                Search
-            </button>
+            </form>
 
-              {/* {
+            <a href="/donate"><button className="navbutton btn btn-warning my-2 btn-sm">Profile</button></a>
+              {/* <Link
+                to="/profile"
+                className={
+                  window.location.pathname === "/" || window.location.pathname === "/profile"
+                }
+              >
+                Profile
+            </Link> */}
+
+
+            {/* {
 
                 (localStorage.getItem("nameId").length!=0) ? (
 
@@ -101,13 +110,11 @@ class Navbar extends React.Component {
 
                 ) : ( */}
 
-                    <LoginButton refId={this.handleRef}/>
-{/* 
+            <LoginButton refId={this.handleRef} />
+            {/* 
                   )
 
               } */}
-
-            </form>
           </div>
         </nav>
       </div>
