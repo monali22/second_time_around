@@ -6,8 +6,9 @@ import "./style.css";
 // import SocialLogin from '@majac/react-social-login';
 // import { FacebookLoginButton } from "react-social-login-buttons";
 // import { GoogleLoginButton } from "react-social-login-buttons";
-import LoginButton from "../LoginButton"
-import SignOutButton from "../SignOutButton"
+import LoginButton from "../LoginButton";
+import SignOutButton from "../SignOutButton";
+import {connect} from "react-redux";
 
 
 // const customStyles = {
@@ -107,19 +108,19 @@ class Navbar extends React.Component {
                 Search
             </button>
 
-              {/* {
+              {
 
-                (localStorage.getItem("nameId").length!=0) ? (
+                (localStorage.getItem("nameId")!=null) ? (
 
-                  <SignOutButton refId={this.handleRef}/>
+                  <SignOutButton />
 
-                ) : ( */}
+                ) : (
 
-                    <LoginButton refId={this.handleRef}/>
-{/* 
-                  )
+                    <LoginButton />
+ 
+                 )
 
-              } */}
+              }  
 
             </form>
           </div>

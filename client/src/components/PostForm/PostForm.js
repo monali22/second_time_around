@@ -55,24 +55,28 @@ class PostForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.item && this.state.quantity) {
-      const newPost = {
-        itemName: this.state.item,
-        quantity: this.state.quantity,
-        category: this.state.category,
-        Address: this.state.Address,
-        url: this.state.url,
-        user_id:localStorage.getItem('nameId')
+    
+       
+      if (this.state.item && this.state.quantity) {
+        const newPost = {
+          itemName: this.state.item,
+          quantity: this.state.quantity,
+          category: this.state.category,
+          Address: this.state.Address,
+          url: this.state.url,
+          user_id:localStorage.getItem('nameId')
+        }
+       // console.log("")
+        console.log("newPost", newPost);
+        API.savePost(newPost)
+          .then(res => {
+            console.log(res.data);
+            this.setState({ stock_id: res.data._id })
+            this.getDataById(res.data._id);
+          })
+          .catch(err => console.log(err));
       }
-      console.log("newPost", newPost);
-      API.savePost(newPost)
-        .then(res => {
-          console.log(res.data);
-          this.setState({ stock_id: res.data._id })
-          this.getDataById(res.data._id);
-        })
-        .catch(err => console.log(err));
-    }
+
 
     
   };

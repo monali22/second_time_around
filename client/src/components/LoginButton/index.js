@@ -56,7 +56,7 @@ class LoginButton extends React.Component {
       openModal = (e) => {
         e.preventDefault();
         this.setState({ modalIsOpen: true });
-        this.props.refId(localStorage.getItem("nameId"));
+       
         
       }
     
@@ -101,19 +101,32 @@ class LoginButton extends React.Component {
             email: this.state.email
           }
           
+          API.findUser(this.state.email) .then(res => {
+            console.log(res.data.length===0);
+             if(res.data.length===0){
+              console.log("not there");
+              API.saveUser(newPost)
+            .then(res2 => {
     
-          console.log("newPost", newPost);
-    
-    
-          API.saveUser(newPost)
-            .then(res => {
-    
-              console.log(res.data);
-              localStorage.setItem("nameId",res.data._id);
-              this.setState({user_id:res.data._id});
+              //console.log(res.data);
+              localStorage.setItem("nameId",res2.data._id);
+              this.setState({user_id:res2.data._id});
             }
             )
             .catch(err => console.log(err));
+            }else{
+              console.log(res);
+              localStorage.setItem("nameId",res.data[0]._id);
+            }
+            
+          }
+          )
+          .catch(err => console.log(err));
+    
+          //console.log("newPost", newPost);
+    
+          
+          
           }
       };
      
@@ -152,7 +165,7 @@ class LoginButton extends React.Component {
                       provider: 'facebook',
                       appId: this.state.facebook,
                       onSuccess: res => {
-                        console.log('Login Success', res);
+                        //console.log('Login Success', res);
                         this.setState({email:res.email,name:res.name,picture:res.picture});
                         this.handleFormSubmit();
                         this.closeModal();
@@ -169,7 +182,7 @@ class LoginButton extends React.Component {
                       provider: 'google',
                       appId: this.state.google,
                       onSuccess: res => {
-                        console.log('Login Success', res);
+                        //console.log('Login Success', res);
                         this.setState({email:res.email,name:res.first_name+" "+res.last_name,picture:res.picture});
                         this.handleFormSubmit();
                         this.closeModal();

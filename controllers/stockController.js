@@ -9,6 +9,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res) {
+   
     db.StockData
       .findById(req.params.id)
       .then(dbModel => res.json(dbModel))
@@ -22,6 +23,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findAll: function(req, res) {
+    console.log(req.query);
     db.StockData
       .find(req.query)
       .sort({ date: -1 })
