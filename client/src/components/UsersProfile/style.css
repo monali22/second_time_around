@@ -1,0 +1,19 @@
+.sectiontitle{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.cardcontent{
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbutton{
+    color:white;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+.cardstyle{
+    margin-top: 20px;
+}

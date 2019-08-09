@@ -91,7 +91,7 @@ class Navbar extends React.Component {
               />
             </form>
 
-            <a href="/donate"><button className="navbutton btn btn-warning my-2 btn-sm">Profile</button></a>
+            <a href="/profile"><button className="navbutton btn btn-warning my-2 btn-sm">Profile</button></a>
               {/* <Link
                 to="/profile"
                 className={
