@@ -2,13 +2,53 @@ import React, { Component } from 'react';
 import API from "../utils/API"
 import "./itemcardstyle.css";
 
-class ItemCard extends Component {
+   class ItemCard extends Component{
+    
 
-  updatePost = () => {
-    // console.log("gafsgas");
-    const msg = {
-      number: 2068876726,
-      message: "hello"
+   state={
+     number:"",
+     //claimed_date:"",
+     text:"i want it",
+     idtest:""
+   }
+   handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+handleClick=(id)=>{
+  
+    console.log("inside click"+id);
+    var claimed_date=new Date(); 
+    console.log("ooo"+claimed_date);
+   //this.setState({idtest:id})
+    //var claimedDate=claimed_date;
+    API.updatePost(id)
+    .then(res => {
+      console.log(res.data);
+      
+    })
+    .catch(err => console.log(err));
+  
+  this.setState({text:"claimed"})
+
+};
+
+
+
+
+
+
+     updatePost=()=>
+    {
+      console.log(this.state.claimed_date);
+      console.log(this.state.idtest);
+     // console.log("gafsgas");
+    const msg={
+      number:this.state.number,
+      message:"Thanks for visiting SecondTimeAround!order confirmed.collect your item within 2 days"
     }
 
     API.getEmail(msg)
@@ -20,8 +60,10 @@ class ItemCard extends Component {
 
       )
       .catch(err => console.log(err));
-
-  }
+      
+    };
+   
+   
 
   render() {
 
@@ -39,7 +81,7 @@ class ItemCard extends Component {
             {/* <p>Items available for 5 days after posting</p> */}
           </div>
           {/*<!-- Button trigger modal -->*/}
-          <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1">Claim it!</button>
+          <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"  onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}>Claim it!</button>
           {/*<!-- Modal -->*/}
           <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -56,7 +98,7 @@ class ItemCard extends Component {
                     <div className="form-group">
                       <label htmlFor="InpuNumber">Number</label>
                       <input type="text" className="form-control" id="Inputnumber" aria-describedby="Name"
-                        placeholder="Enter Number" name="number" />
+                        placeholder="Enter Number" name="number"  onChange={this.handleInputChange}  />
                     </div>
                     <div className="form-group">
                       <label htmlFor="FormControlTextarea">Message | Please specify the ETA of pick up</label>

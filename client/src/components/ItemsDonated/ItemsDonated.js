@@ -12,6 +12,8 @@ class ItemsDonated extends Component {
     stock_id: "",
     img_url: "",
     stocks: []
+    
+    
   }
   //load all stock
   componentDidMount() {
@@ -19,11 +21,50 @@ class ItemsDonated extends Component {
   }
 
   loadStock = () => {
+    var arr=[];
     API.getData()
       .then(res => {
-        this.setState({ stocks: res.data })
+        
+        //this.setState({ stocks: res.data })
+      
+        res.data.forEach(element => {
+            
+          if(element.claimed =="false")
+          {
+            arr.push(element);
+
+
+          }
+        else if(element.claimed=="true")
+        {
+          //console.log("pickupppp"+element.claimedDate);
+          //checking date claimed is less that current date (no pickup happened)
+          var dtcl=new Date(element.claimedDate);
+          dtcl.setDate(dtcl.getDate()+2);
+          var todays_date=new Date(); 
+          if(dtcl<todays_date)
+          {
+            arr.push(element);
+            console.log("no pickup on date +2 so back to stock till 5days starting from posted date");
+          }
+          else{
+           console.log("item pickup success or going to happen");
+          }
+          
+        }
+        
+            //if claimed item not collected
+            var dt=new Date(element.date);
+            dt.setDate(dt.getDate()+1);
+           // console.log(dt);
+            //need to complete
+
+            
+          
+        });
+        this.setState({ stocks: arr})
         // this.props.updatestock(this.state.stocks);
-        //console.log(res.data);
+        console.log(res.data);
       }
 
       )
@@ -31,10 +72,13 @@ class ItemsDonated extends Component {
   };
 
   render() {
-    //console.log(this.state.stocks);
+    console.log(this.state.stocks.length);
     return (
       <div className="row">
-        {this.state.stocks.length > 0 && this.state.stocks.map(stock => <ItemCard item={stock} />)}
+        {this.state.stocks.length > 1 && this.state.stocks.map(stock =>
+        
+          
+          <ItemCard item={stock} key={stock.stock_id} />)}
       </div>);
   }
 
