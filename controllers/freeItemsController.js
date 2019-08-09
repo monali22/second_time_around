@@ -26,7 +26,7 @@ module.exports = {
     const number=req.body.number;
     const message=req.body.message;
     
-    nexmo.message.sendSms('18163369909', '12068876726','hello',{type:'unicode'},(err,response)=>{
+    nexmo.message.sendSms('18163369909', number,message,{type:'unicode'},(err,response)=>{
     
       if(err)
       {

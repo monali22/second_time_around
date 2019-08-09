@@ -3,12 +3,51 @@ import API from "../utils/API"
 
    class ItemCard extends Component{
     
+
+   state={
+     number:"",
+     //claimed_date:"",
+     text:"i want it",
+     idtest:""
+   }
+   handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+handleClick=(id)=>{
+  
+    console.log("inside click"+id);
+    var claimed_date=new Date(); 
+    console.log("ooo"+claimed_date);
+   //this.setState({idtest:id})
+    //var claimedDate=claimed_date;
+    API.updatePost(id)
+    .then(res => {
+      console.log(res.data);
+      
+    })
+    .catch(err => console.log(err));
+  
+  this.setState({text:"claimed"})
+
+};
+
+
+
+
+
+
      updatePost=()=>
     {
+      console.log(this.state.claimed_date);
+      console.log(this.state.idtest);
      // console.log("gafsgas");
     const msg={
-      number:2068876726,
-      message:"hello"
+      number:this.state.number,
+      message:"Thanks for visiting SecondTimeAround!order confirmed.collect your item within 2 days"
     }
     
       API.getEmail(msg)
@@ -21,7 +60,7 @@ import API from "../utils/API"
       )
       .catch(err => console.log(err));
       
-    }
+    };
    
     render()
     {
@@ -40,9 +79,9 @@ import API from "../utils/API"
             <p className="formfield card-text">Pickup location:{this.props.item.Address}</p>
             <p className="formfield card-text">Posted date:{this.props.item.date}</p>
             <p>Items available for 5 days after posting</p>
-    ​
+    ​          
             {/*<!-- Button trigger modal -->*/}
-            <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"   >i want it</button>
+            <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"  onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
             {/*<!-- Modal -->*/}
             <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog"
               aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -59,13 +98,9 @@ import API from "../utils/API"
                       <div className="form-group">
                         <label htmlFor="InpuNumber">Number</label>
                         <input type="text" className="form-control" id="Inputnumber" aria-describedby="Name"
-                          placeholder="Enter Number" name="number" />
+                          placeholder="Enter Number" name="number"  onChange={this.handleInputChange} />
                       </div>
-                      <div className="form-group">
-                        <label htmlFor="InputDate">Date</label>
-                        <input type="date" className="form-control" id="InputDate" aria-describedby="Date"
-                          placeholder="Enter DD/MM/YYYY" />
-                      </div>
+                      
                       <div className="form-group">
                         <label htmlFor="InputTime">ETA of Pick Up</label>
                         <input type="time" className="form-control" id="InputTime" aria-describedby="Time"
@@ -79,7 +114,7 @@ import API from "../utils/API"
     ​
                     </form>
                     <div className="modal-footer">
-                      <button type="button" value="Submit" className="navbutton btn btn-warning my-2 btn-sm" onClick={this.updatePost}>Submit</button>
+                      <button type="button" value="Submit" className="navbutton btn btn-warning my-2 btn-sm"  onClick={this.updatePost}>Submit</button>
                     </div>
                   </div>
                 </div>
