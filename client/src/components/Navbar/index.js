@@ -74,8 +74,7 @@ class Navbar extends React.Component {
           <a className="navstylelogo navbar-brand logo" href="#">
            Second time around
        </a>
-         {/* <img className="navstylelogo navbar-brand logo" src={require('./logo.png')} height="80" class="d-inline-block align-top" alt="secondtime"/> */}
-         <button
+           <button
            className="navbar-toggler"
            data-toggle="collapse"
            data-target="#navbarSupportedContent"
@@ -108,13 +107,15 @@ class Navbar extends React.Component {
              <button className="navbutton btn btn-warning my-2 btn-sm" type="submit">
                Search
            </button>
-              {
+           </form>
+           <LoginButton />
+              {/* {
 
-                (localStorage.getItem("nameId")!=null ?   <SignOutButton /> : <LoginButton />)
+                (this.state.userId ? <LoginButton id={this.ifLoginClicked}/>:  <SignOutButton id={this.ifLogoutClicked}/>)
 
-              }  
+              }   */}
 
-            </form>
+            
           </div>
         </nav>
       </div>

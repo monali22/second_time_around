@@ -2,7 +2,8 @@ import React from 'react'
 
 class SignOutButton extends React.Component {
     handleLogout=()=>{
-        {localStorage.clear()}
+        console.log("click logout");
+        localStorage.clear();
         
     }
     render(){
