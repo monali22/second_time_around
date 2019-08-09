@@ -21,7 +21,7 @@ class ItemsDonated extends Component {
   }
 
   loadStock = () => {
-    var arr=[''];
+    var arr=[];
     API.getData()
       .then(res => {
         
