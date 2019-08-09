@@ -80,8 +80,8 @@ class PostForm extends Component {
     return (
       <div>
         <div className="">
-          <div className="">
-            <h3 id="postitemform" className="card-title sectiontitle">Enter the item you want to donate:</h3>
+          <div className="offset-3 col-md-6">
+            <h3 id="postitemform" className="card-title sectiontitle">Enter the item you want to donate</h3>
             <hr></hr>
             <form>
               {/* Input Item Name */}
@@ -116,7 +116,6 @@ class PostForm extends Component {
                   onChange={this.handleInputChange} aria-label="Example select with button addon">
                   <option value="Choose">Choose...</option>
                   <option value="Toys">Toys</option>
-                  <option value="Housing">Housing</option>
                   <option value="Electronics">Electronics</option>
                   <option value="Sports">Sports</option>
                   <option value="Home">Home</option>
@@ -157,7 +156,7 @@ class PostForm extends Component {
                     <img src={this.state.url} width="100px" height="100px"></img>
                     <br></br>
                     <div className="modal-footer">
-                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)} data-dismiss="modal">Delete</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  data-dismiss="modal">Delete</button>
                       <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
                     </div>
                   </div>
