@@ -1,43 +1,80 @@
-import React ,{Component} from 'react';
+import React, { Component } from 'react';
 import API from "../utils/API"
-//const ItemCard=({item})=>{
-    //console.log(item);
-    const ItemCard= ({item})=>{
-      console.log(item);
-   const updatePost=(id,claimed)=>{
+import "./itemcardstyle.css";
 
-    //console.log("inside click method");
-    claimed=true;
-    console.log(id,claimed);
-   
-    /*API.updatePost(id,claimed)
-    .then(res => {
-      console.log(res.data);
-    
-    } 
-    )
-     .catch(err => console.log(err));
-*/
-   }
-    
-    return(
-        <div className="card" >
-    
-    <div className="card-body">
-      <h5 className="sectiontitle card-title">Catalog</h5>
-      <hr></hr>
-      <img src={item.url} width="100px" height="100px"></img>
-      <p className="formfield card-text">Product:{item.itemName}</p>
-      <p className="formfield card-text">Department:{item.category}</p>
-      <p className="formfield card-text">Pickup location:{item.Address}</p>
-      <p className="formfield card-text">Posted date:{item.date}</p>
-      <p>Items available for 5 days after posting</p>
-   
+class ItemCard extends Component {
 
-      <button type="button"  className="navbutton btn btn-warning my-2 btn-sm" onClick={() => updatePost(item._id,item.claimed)}  >i want it</button>
-    </div>
-  </div>
+  updatePost = () => {
+    // console.log("gafsgas");
+    const msg = {
+      number: 2068876726,
+      message: "hello"
+    }
+
+    API.getEmail(msg)
+      .then(res => {
+
+        // this.props.updatestock(this.state.stocks);
+        console.log(res.data);
+      }
+
+      )
+      .catch(err => console.log(err));
+
+  }
+
+  render() {
+
+    //console.log(this.props.item.itemName);
+
+    return (
+      <div className="col-md-4" >
+        <div className="card cardstyle">
+          <img className="card-img-top" src={this.props.item.url} width="100px" height="200px"></img>
+          <div className="card-body">
+            <h5 className="sectiontitle card-title">{this.props.item.itemName}</h5>
+            <hr></hr>
+            <p className="cardcontent card-text">Pick it up at {this.props.item.Address}</p>
+            <p className="cardcontent card-text">This item was posted on {this.props.item.date}. Hurry up it's oly available for 5 days!</p>
+            {/* <p>Items available for 5 days after posting</p> */}
+          </div>
+          {/*<!-- Button trigger modal -->*/}
+          <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1">Claim it!</button>
+          {/*<!-- Modal -->*/}
+          <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalCenterTitle">Pick up information</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <form>
+                    <div className="form-group">
+                      <label htmlFor="InpuNumber">Number</label>
+                      <input type="text" className="form-control" id="Inputnumber" aria-describedby="Name"
+                        placeholder="Enter Number" name="number" />
+                    </div>
+                    <div className="form-group">
+                      <label htmlFor="FormControlTextarea">Message | Please specify the ETA of pick up</label>
+                      <textarea className="form-control" id="FormControlTextarea" rows=""
+                        placeholder="Enter optional message to user"></textarea>
+                    </div>
+
+                  </form>
+                  <div className="modal-footer">
+                    <button type="button" value="Submit" className="navbutton btn btn-warning my-2 btn-sm" onClick={this.updatePost}>Submit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
+  }
 }
-    
 export default ItemCard;

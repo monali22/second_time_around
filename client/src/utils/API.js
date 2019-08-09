@@ -19,6 +19,23 @@ export default{
 // request the information to send it to the server
     saveItem: function(item) {
       return axios.post("http://localhost:3001/api/freeItems", item);
+    },
+    getEmail:function(msg){
+      return axios.post("http://localhost:3001/api/freeItems",msg);
+    },
+    saveUser : function(userData){
+      return axios.post("http://localhost:3001/api/user",userData).then(res=> {const token = res.data.token;
+        localStorage.setItem("jwtToken",token);
     }
-   
+      );
+    },
+    updateUserData:function(name,data){
+      return axios.put("http://localhost:3001/api/user/:"+name,{data});
+    },
+    findUser:function(email){
+      return axios.get("http://localhost:3001/api/user/?email=" + email);
+    },
+    getUData: function(){
+      return axios.get("http://localhost:3001/api/user/");
+    },
 };

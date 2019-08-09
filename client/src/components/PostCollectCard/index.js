@@ -2,32 +2,6 @@ import React from 'react';
 import "./style.css";
 
 function PostCollectCard() {
-    // Setting the componet's initial state
-    // state = {
-    //     name: "",
-    //     date: "",
-    //     time: "",
-    //     message: "",
-
-    // };
-
-    // // handle any changes to the input fields
-    // handleInputChange = event => {
-    //     // Getting the value and name of the input which triggered the change
-    //     const { name, value } = event.target;
-
-    //     // Set the state for the appropriate input field
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
-
-    // handleFormSubmit = event => {
-    //     event.preventDefault();
-
-    //     this.setState({ name: "" });
-    // };
-
 
     return (
         <div>
@@ -47,7 +21,7 @@ function PostCollectCard() {
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">
                                 <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalCenterTitle">Collection Info</h5>
+                                    <h5 className="modal-title" id="exampleModalCenterTitle">Pick up information</h5>
                                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
