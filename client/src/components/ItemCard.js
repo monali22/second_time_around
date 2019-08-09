@@ -8,7 +8,7 @@ import "./itemcardstyle.css";
    state={
      number:"",
      //claimed_date:"",
-     text:"i want it",
+     text:"claime",
      idtest:""
    }
    handleInputChange = event => {
@@ -81,7 +81,7 @@ handleClick=(id)=>{
             {/* <p>Items available for 5 days after posting</p> */}
           </div>
           {/*<!-- Button trigger modal -->*/}
-          <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"  onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}>Claim it!</button>
+          <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"  onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
           {/*<!-- Modal -->*/}
           <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
