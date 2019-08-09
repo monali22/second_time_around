@@ -7,7 +7,7 @@ import Jumbotron from "./components/Jumbotron";
 import CardWrapper from "./components/CardWrapper";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SimpleMap from './components/SimpleMap';
-
+import MapWrapper from './components/MapWrapper';
 
 function App() {
   return (
@@ -21,16 +21,13 @@ function App() {
         <Wrapper>
           <PostForm />
         </Wrapper>
-        <SimpleMap/>
+        <MapWrapper>
+          <SimpleMap />
+        </MapWrapper>
       </div>
     </Router>
   );
 }
-
-
-
-
-
 
 export default App;
 

@@ -1,45 +1,66 @@
 import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
-// import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { log } from 'util';
 
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-const handleApiLoaded = (map, maps) => {
-    // use map and maps objects
-};
-
+const style = {
+    width: '90%',
+    height: '70%',
+    position: 'relative'
+}
 class SimpleMap extends Component {
+    state = {
+        
+    }
 
-    static defaultProps = {
-        center: {
-            lat: 47.6062,
-            lng: -122.3321,
-        },
-        zoom: 13
-    };
 
+ componentDidMount  () {
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log("Trying");
+            console.log(position)
+            
+            this.setState({
+                position
+            })
+            // var pos = {
+            //     lat: position.coords.latitude,
+            //     lng: position.coords.longitude
+            // };
+        })
+    }
+
+   
     render() {
         return (
-            // Important! Always set the container height explicitly
-            <div style={{ height: '90%', width: '50%' }}>
-            <GoogleMapReact
-                bootstrapURLKeys={{ key: "AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8" }}
-                defaultCenter={this.props.center}
-                defaultZoom={this.props.zoom}
+            <div>
 
-                yesIWantToUseGoogleMapApiInternals
-                onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+            {this.state.position?
+            (<Map
+            google={this.props.google}
+            style={style}
+            initialCenter={{
+                lat: this.state.position.coords.latitude,
+                lng: this.state.position.coords.longitude
+            }}
+            zoom={15}
+            onClick={this.onMapClicked}
             >
-                <AnyReactComponent
-                    lat={47.6062}
-                    lng={-122.3321}
-                    text="My Marker"
-                />
-            </GoogleMapReact>
-           </div >
+                <Marker onClick={this.onMarkerClick}
+                    name={'Current location'} />
+                <InfoWindow onClose={this.onInfoWindowClose}>
+                    {/* <div>
+                <h1>{this.state.selectedPlace.name}</h1>
+                </div> */}
+                </InfoWindow>
+            </Map >):(
+                <p>Map not ready</p>
+            )}
+            </div>
         );
     }
 }
 
-export default SimpleMap;
+export default GoogleApiWrapper({
+    apiKey: ("AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8")
+})(SimpleMap)
+
 
