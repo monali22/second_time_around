@@ -156,8 +156,8 @@ class PostForm extends Component {
                     <img src={this.state.url} width="100px" height="100px"></img>
                     <br></br>
                     <div className="modal-footer">
-                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  data-dismiss="modal">Delete</button>
-                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)} data-dismiss="modal">Delete</button>
+                      <a href="/"><button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Confirm</button></a>
                     </div>
                   </div>
                 </div>
