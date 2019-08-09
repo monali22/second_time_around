@@ -55,30 +55,24 @@ class PostForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    
-       
-      if (this.state.item && this.state.quantity) {
-        const newPost = {
-          itemName: this.state.item,
-          quantity: this.state.quantity,
-          category: this.state.category,
-          Address: this.state.Address,
-          url: this.state.url,
-          user_id:localStorage.getItem('nameId')
-        }
-       // console.log("")
-        console.log("newPost", newPost);
-        API.savePost(newPost)
-          .then(res => {
-            console.log(res.data);
-            this.setState({ stock_id: res.data._id })
-            this.getDataById(res.data._id);
-          })
-          .catch(err => console.log(err));
+    if (this.state.item && this.state.quantity) {
+      const newPost = {
+        itemName: this.state.item,
+        quantity: this.state.quantity,
+        category: this.state.category,
+        Address: this.state.Address,
+        url: this.state.url,
+        user_id: localStorage.getItem('nameId')
       }
-
-
-    
+      console.log("newPost", newPost);
+      API.savePost(newPost)
+        .then(res => {
+          console.log(res.data);
+          this.setState({ stock_id: res.data._id })
+          this.getDataById(res.data._id);
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
@@ -163,16 +157,14 @@ class PostForm extends Component {
                     <img src={this.state.url} width="100px" height="100px"></img>
                     <br></br>
                     <div className="modal-footer">
-                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  data-dismiss="modal">Delete</button>
-                      <button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)} data-dismiss="modal">Delete</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-               
-
         </div>
       </div>
     );
@@ -202,7 +194,6 @@ class PostForm extends Component {
       });
   }
 }
-
 
 export default PostForm;
 
