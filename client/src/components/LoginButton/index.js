@@ -197,7 +197,8 @@ class LoginButton extends React.Component {
                   <p className="socialLoginLine"><span>Or USE YOUR EMAIl</span></p>
 
                       <div className="footerSign">
-                      <a href="#nav-home" className=" " >Sign In </a>
+                     
+                      <a href="#nav-home" className=" " > </a>
                      
                       <a href="#nav-content1" className="verticalLine contentSignUp" > Sign Up</a>
                       </div>
