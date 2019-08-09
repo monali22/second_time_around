@@ -64,7 +64,7 @@ class ItemsDonated extends Component {
         });
         this.setState({ stocks: arr})
         // this.props.updatestock(this.state.stocks);
-        //console.log(res.data);
+        console.log(res.data);
       }
 
       )
