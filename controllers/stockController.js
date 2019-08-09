@@ -31,8 +31,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    var claimed_date=new Date(); 
     db.StockData
-      .update({ _id: req.params.id },{$set:{claimed:req.body.claimed} },
+    .update({ _id: req.params.id },{$set:{claimed:true,claimedDate:claimed_date} },
         function(error, edited) {
           // Log any errors from mongojs
           if (error) {

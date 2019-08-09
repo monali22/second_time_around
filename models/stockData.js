@@ -21,8 +21,8 @@ var StockSchema = new Schema({
         type:Number
     },
     claimed:{
-        type:Boolean,
-        default:false
+        type:String,
+        default:"false"
     },
     url:{
         type:String,
@@ -30,6 +30,7 @@ var StockSchema = new Schema({
 
     },
     date: { type: Date, default: Date.now() },
+    claimedDate:{type:Date},
     Address:{type:String},
     expireAt: {
         type: Date,
