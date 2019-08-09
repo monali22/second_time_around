@@ -67,12 +67,13 @@ class LoginButton extends React.Component {
         this.subBtn.style.backgroundColor = "blue";
         this.subBtn.style.color = "white";
         this.subBtn.style.marginLeft = "40%";
-    
+       this.closeModal();
     
       }
     
       closeModal = () => {
         this.setState({ modalIsOpen: false });
+        window.location.reload(true);
       }
       postData = (e) => {
         e.preventDefault();
