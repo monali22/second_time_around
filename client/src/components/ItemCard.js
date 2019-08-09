@@ -29,7 +29,6 @@ class ItemCard extends Component {
 
     return (
       <div className="col-md-4" >
-
         <div className="card cardstyle">
           <img className="card-img-top" src={this.props.item.url} width="100px" height="200px"></img>
           <div className="card-body">
