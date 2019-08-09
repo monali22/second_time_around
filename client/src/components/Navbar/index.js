@@ -6,9 +6,10 @@ import "./style.css";
 // import SocialLogin from '@majac/react-social-login';
 // import { FacebookLoginButton } from "react-social-login-buttons";
 // import { GoogleLoginButton } from "react-social-login-buttons";
-import LoginButton from "../LoginButton"
-import SignOutButton from "../SignOutButton"
-import { Link } from "react-router-dom";
+import LoginButton from "../LoginButton";
+import SignOutButton from "../SignOutButton";
+import {connect} from "react-redux";
+import {Link } from "react-router-dom"
 
 
 class Navbar extends React.Component {
@@ -31,6 +32,7 @@ class Navbar extends React.Component {
 
   render() {
     return (
+
       <div>
         <nav className="navbar navbar-expand-lg navbar-light">
 
