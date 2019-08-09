@@ -160,7 +160,7 @@ class PostForm extends Component {
                     <br></br>
                     <div className="modal-footer">
                       <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  data-dismiss="modal">Delete</button>
-                      <button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
                     </div>
                   </div>
                 </div>

@@ -8,53 +8,17 @@ import "./style.css";
 // import { GoogleLoginButton } from "react-social-login-buttons";
 import LoginButton from "../LoginButton"
 import SignOutButton from "../SignOutButton"
+import { Link } from "react-router-dom";
 
-
-// const customStyles = {
-//   content: {
-//     top: '50%',
-//     left: '50%',
-//     right: '50%',
-//     bottom: '50%',
-//     marginRight: '-50%',
-//     transform: 'translate(-50%, -50%)',
-//     height: '100%',
-//     width: '70%',
-
-
-
-//   }
-// };
-
-
-// const styleLogIn = {
-//   "marginLeft": "1px"
-// }
-
-
-
-
-
-
-
-//Modal.setAppElement('#main')
 
 class Navbar extends React.Component {
 
-  
-
   ifLoginClicked = () => {
-
     this.setState({ isLoggedIn: true });
-
   }
 
-
-
   ifLogoutClicked = () => {
-
     this.setState({ isLoggedIn: false });
-
   }
 
   logInInfo =(val) =>{
@@ -69,10 +33,32 @@ class Navbar extends React.Component {
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-light">
-          <a className="navstylelogo navbar-brand logo" href="#">
+
+        <Link className="navstylelogo navbar-brand logo" to="/">
+        Second time around
+      </Link>
+
+
+          {/* <a className="navstylelogo navbar-brand logo" href="#">
             Second time around
-        </a>
+        </a> */}
           {/* <img className="navstylelogo navbar-brand logo" src={require('./logo.png')} height="80" class="d-inline-block align-top" alt="secondtime"/> */}
+          <div>
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link
+              to="/profile"
+              className={
+                window.location.pathname === "/" || window.location.pathname === "/profile"
+                  ? "nav-link active"
+                  : "nav-link"
+              }
+            >
+              Profile
+            </Link>
+          </li>
+        </ul>
+      </div>
           <button
             className="navbar-toggler"
             data-toggle="collapse"
