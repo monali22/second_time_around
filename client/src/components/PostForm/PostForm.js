@@ -62,7 +62,7 @@ class PostForm extends Component {
         category: this.state.category,
         Address: this.state.Address,
         url: this.state.url,
-        user_id:localStorage.getItem('nameId')
+        user_id: localStorage.getItem('nameId')
       }
       console.log("newPost", newPost);
       API.savePost(newPost)
@@ -73,8 +73,6 @@ class PostForm extends Component {
         })
         .catch(err => console.log(err));
     }
-
-    
   };
 
   render() {
@@ -159,16 +157,14 @@ class PostForm extends Component {
                     <img src={this.state.url} width="100px" height="100px"></img>
                     <br></br>
                     <div className="modal-footer">
-                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  data-dismiss="modal">Delete</button>
-                      <button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)} data-dismiss="modal">Delete</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-               
-
         </div>
       </div>
     );
@@ -198,7 +194,6 @@ class PostForm extends Component {
       });
   }
 }
-
 
 export default PostForm;
 
