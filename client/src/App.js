@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // import Wrapper from "./components/Wrapper";
 import Navbar from "./components/Navbar";
 import Jumbotron from "./components/Jumbotron";
+import Footer from "./components/Footer";
 // import CardWrapper from "./components/CardWrapper";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import PostCollectCard from './components/PostCollectCard';
@@ -21,9 +22,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/donate" component={Donate} />
-        {/* <Wrapper>
-          <PostForm />
-        </Wrapper> */}
+        <Footer/>
       </div>
     </Router>
   );
