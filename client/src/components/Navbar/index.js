@@ -94,29 +94,8 @@ class Navbar extends React.Component {
             </form>
 
             <a href="/profile"><button className="navbutton btn btn-warning my-2 btn-sm">Profile</button></a>
-              {/* <Link
-                to="/profile"
-                className={
-                  window.location.pathname === "/" || window.location.pathname === "/profile"
-                }
-              >
-                Profile
-            </Link> */}
-
-
-            {/* {
-
-                (localStorage.getItem("nameId").length!=0) ? (
-
-                  <SignOutButton refId={this.handleRef}/>
-
-                ) : ( */}
-
-            <LoginButton refId={this.handleRef} />
-            {/* 
-                  )
-
-              } */}
+              
+              {(localStorage.getItem("nameId")!==null)?<SignOutButton />:<LoginButton />}
           </div>
         </nav>
       </div>

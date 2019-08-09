@@ -109,6 +109,7 @@ class LoginButton extends React.Component {
             .then(res2 => {
     
               //console.log(res.data);
+              localStorage.clear();
               localStorage.setItem("nameId",res2.data._id);
               this.setState({user_id:res2.data._id});
             }
@@ -116,6 +117,7 @@ class LoginButton extends React.Component {
             .catch(err => console.log(err));
             }else{
               console.log(res);
+              localStorage.clear();
               localStorage.setItem("nameId",res.data[0]._id);
             }
             
@@ -197,7 +199,8 @@ class LoginButton extends React.Component {
                   <p className="socialLoginLine"><span>Or USE YOUR EMAIl</span></p>
 
                       <div className="footerSign">
-                      <a href="#nav-home" className=" " >Sign In </a>
+                     
+                      <a href="#nav-home" className=" " > </a>
                      
                       <a href="#nav-content1" className="verticalLine contentSignUp" > Sign Up</a>
                       </div>
