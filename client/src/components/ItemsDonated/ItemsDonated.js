@@ -76,8 +76,9 @@ class ItemsDonated extends Component {
     return (
       <div className="row">
         {this.state.stocks.length > 1 && this.state.stocks.map(stock =>
+        
           
-          <ItemCard item={stock} />)}
+          <ItemCard item={stock} key={stock.stock_id} />)}
       </div>);
   }
 
