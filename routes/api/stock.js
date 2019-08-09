@@ -14,5 +14,5 @@ router.route("/:id")
 
   module.exports = router;
 
-  router.route("/:id:body")
-  .put(stockController.update);
+  router.route("/:id")
+  .post(stockController.update);
