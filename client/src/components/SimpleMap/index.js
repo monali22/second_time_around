@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
-
+import dotenv from 'dotenv';
+dotenv.config();
+const googleKey = process.env.GOOGLE_KEY;
 const style = {
     width: '90%',
     height: '70%',
@@ -9,7 +11,6 @@ const style = {
 
 class SimpleMap extends Component {
     state = {
-
     }
 
     componentDidMount() {
@@ -57,7 +58,7 @@ class SimpleMap extends Component {
 }
 
 export default GoogleApiWrapper({
-    apiKey: ("AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8")
+    apiKey: "AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8"
 })(SimpleMap)
 
 
