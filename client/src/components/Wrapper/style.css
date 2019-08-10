@@ -1,7 +1,7 @@
 .wrapper {
     padding-top: 50px;
     /* background: #ECEFF1; */
-    background: whitesmoke;
+    /* background: whitesmoke; */
     height: 100%;
     display: right;
     flex-flow: row wrap;
