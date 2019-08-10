@@ -85,19 +85,20 @@ class PostForm extends Component {
             <hr></hr>
             <form>
               {/* Input Item Name */}
-              <div className="formfield form-group">
+              <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Product</label>
-                <input type="text" className="formfield form-control" placeholder="ex. Table" name="item" value={this.state.item}
+                <input type="text" className="form-control" placeholder="ex. Dining table" name="item" value={this.state.item}
                   onChange={this.handleInputChange} />
+                <small className="form-text text-muted">* Required</small>
               </div>
               {/* Location: Address */}
-              <div className="formfield form-group">
+              <div className="form-group">
                 <label htmlFor="exampleFormControlInput1">Pick up address</label>
                 <input type="text" className="form-control" placeholder="123 Main St, Seattle, WA, 98123 " name="Address" value={this.state.Address}
                   onChange={this.handleInputChange} />
               </div>
               {/* Select Quantity */}
-              <div className="formfield form-group">
+              <div className="form-group">
                 <label htmlFor="exampleFormControlSelect1">Select quantity</label>
                 <select className="form-control" id="exampleFormControlSelect1" name="quantity" value={this.state.quantity}
                   onChange={this.handleInputChange}>
@@ -108,9 +109,10 @@ class PostForm extends Component {
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
+                <small className="form-text text-muted">* Required</small>
               </div>
               {/* Select Category */}
-              <div className="formfield form-group">
+              <div className="form-group">
                 <label htmlFor="inputGroupSelect01">Select category</label>
                 <select className="custom-select" id="inputGroupSelect03" name="category" value={this.state.category}
                   onChange={this.handleInputChange} aria-label="Example select with button addon">
@@ -124,13 +126,13 @@ class PostForm extends Component {
                   <option value="Other">Other</option>
                 </select>
               </div>
-              <div className="formfield form-group">
-                <label >Include an image: </label>
+              <div className="form-group">
+                <label >Include an image</label>
                 <input type="file" id="images" placeholder="Images" multiple onChange={this.uploadFile} />
               </div>
             </form>
             <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
-              this.state.quantity)} onClick={this.handleFormSubmit}>Submit</button>
+              this.state.quantity)} onClick={this.handleFormSubmit}>Confirm</button>
           </div>
         </div>
         <div>
@@ -147,17 +149,17 @@ class PostForm extends Component {
                     </button>
                   </div>
                   <div className="modal-body">
-                    <h3 className="sectiontitle">Your Post</h3>
-                    <hr></hr>
+                    {/* <h3 className="sectiontitle">Your Post</h3> */}
+                    
                     <h5 className="formfield" >Product Name:{this.state.stock_arr.itemName}</h5>
                     <h6 className="formfield" >Item quantity:{this.state.stock_arr.quantity}</h6>
                     <h6 className="formfield" >Department:{this.state.stock_arr.category}</h6>
                     <h6 className="formfield" >Address:{this.state.stock_arr.Address}</h6>
-                    <img src={this.state.url} width="100px" height="100px"></img>
+                    <img src={this.state.url} width="200px" height="200px"></img>
                     <br></br>
                     <div className="modal-footer">
-                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)}  data-dismiss="modal">Delete</button>
-                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal">Submit</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" onClick={() => this.deletePost(this.state.stock_arr._id)} data-dismiss="modal">Delete</button>
+                      <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal" onClick={()=> window.location.href="/"}>Submit</button>
                     </div>
                   </div>
                 </div>

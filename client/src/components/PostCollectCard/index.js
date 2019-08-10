@@ -51,7 +51,7 @@ function PostCollectCard() {
 
                                     </form>
                                     <div className="modal-footer">
-                                        <button type="submit" value="Submit" className="btn btn-primary">Submit</button>
+                                        <button type="submit" value="Submit" className="btn btn-primary" data-dismiss="modal">Submit</button>
                                     </div>
                                 </div>
                             </div>
