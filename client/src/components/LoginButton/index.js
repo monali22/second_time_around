@@ -67,13 +67,13 @@ class LoginButton extends React.Component {
         this.subBtn.style.backgroundColor = "blue";
         this.subBtn.style.color = "white";
         this.subBtn.style.marginLeft = "40%";
-       this.closeModal();
+        
     
       }
     
       closeModal = () => {
         this.setState({ modalIsOpen: false });
-        window.location.reload(true);
+        
       }
       postData = (e) => {
         e.preventDefault();
@@ -94,19 +94,15 @@ class LoginButton extends React.Component {
 
       handleFormSubmit = () => {
         console.log("In handle submit");
-       // event.preventDefault();
+       //e.preventDefault();
         if (this.state.email) {
           const newPost = {
             name: this.state.name,
             picture: this.state.picture,
             email: this.state.email
           }
-          
-          API.findUser(this.state.email) .then(res => {
-            console.log(res.data.length===0);
-             if(res.data.length===0){
-              console.log("not there");
-              API.saveUser(newPost)
+          console.log(newPost);
+          API.saveUser(newPost)
             .then(res2 => {
     
               //console.log(res.data);
@@ -116,21 +112,29 @@ class LoginButton extends React.Component {
             }
             )
             .catch(err => console.log(err));
-            }else{
-              console.log(res);
-              localStorage.clear();
-              localStorage.setItem("nameId",res.data[0]._id);
-            }
+
+
+          // API.findUser(this.state.email) .then(res => {
+          //   console.log(res.data.length===0);
+          //    if(res.data.length===0){
+          //     console.log("not there");
+              
+          //   }else{
+          //     console.log(res);
+          //     localStorage.clear();
+          //     localStorage.setItem("nameId",res.data[0]._id);
+          //   }
             
-          }
-          )
-          .catch(err => console.log(err));
+          // }
+          // )
+          // .catch(err => console.log(err));
     
           //console.log("newPost", newPost);
     
           
           
           }
+          
       };
      
     render(){
@@ -168,10 +172,10 @@ class LoginButton extends React.Component {
                       provider: 'facebook',
                       appId: this.state.facebook,
                       onSuccess: res => {
-                        //console.log('Login Success', res);
+                        console.log('Login Success', res);
                         this.setState({email:res.email,name:res.name,picture:res.picture});
-                        this.handleFormSubmit();
-                        this.closeModal();
+                        //this.handleFormSubmit();
+                       // this.closeModal();
                       },
                       onFail: error => {
                         console.log('Login Fail', error);
@@ -185,10 +189,10 @@ class LoginButton extends React.Component {
                       provider: 'google',
                       appId: this.state.google,
                       onSuccess: res => {
-                        //console.log('Login Success', res);
+                        console.log('Login Success', res);
                         this.setState({email:res.email,name:res.first_name+" "+res.last_name,picture:res.picture});
-                        this.handleFormSubmit();
-                        this.closeModal();
+                        //this.handleFormSubmit();
+                        //this.closeModal();
                       },
                       onFail: error => {
                         console.log('Login Fail', error);

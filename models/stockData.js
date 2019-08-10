@@ -32,11 +32,11 @@ var StockSchema = new Schema({
     date: { type: Date, default: Date.now() },
     claimedDate:{type:Date},
     Address:{type:String},
-    expireAt: {
-        type: Date,
-         default: Date.now(),
-          index: { expires: '7200m' },
-       },
+    // expireAt: {
+    //     type: Date,
+    //      default: Date.now(),
+    //       index: { expires: '7200m' },
+    //    },
     user_id: {
         type:String,
         required:true
