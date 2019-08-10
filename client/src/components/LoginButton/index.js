@@ -102,34 +102,35 @@ class LoginButton extends React.Component {
             email: this.state.email
           }
           console.log(newPost);
-          API.saveUser(newPost)
-            .then(res2 => {
+          
+
+
+          API.findUser(this.state.email) .then(res => {
+            console.log(res);
+            //  if(res.data.length===0){
+            //   console.log("not there");
+            //   API.saveUser(newPost)
+            // .then(res2 => {
     
-              //console.log(res.data);
-              localStorage.clear();
-              localStorage.setItem("nameId",res2.data._id);
-              this.setState({user_id:res2.data._id});
-            }
-            )
-            .catch(err => console.log(err));
-
-
-          // API.findUser(this.state.email) .then(res => {
-          //   console.log(res.data.length===0);
-          //    if(res.data.length===0){
-          //     console.log("not there");
+            //   //console.log(res.data);
+            //   localStorage.clear();
+            //   localStorage.setItem("nameId",res2.data._id);
+            //   this.setState({user_id:res2.data._id});
+            // }
+            // )
+            // .catch(err => console.log(err));
               
-          //   }else{
-          //     console.log(res);
-          //     localStorage.clear();
-          //     localStorage.setItem("nameId",res.data[0]._id);
-          //   }
+            // }else{
+            //   console.log(res);
+            //   localStorage.clear();
+            //   localStorage.setItem("nameId",res.data[0]._id);
+            // }
             
-          // }
-          // )
-          // .catch(err => console.log(err));
+          }
+          )
+          .catch(err => console.log(err));
     
-          //console.log("newPost", newPost);
+          console.log("newPost", newPost);
     
           
           
