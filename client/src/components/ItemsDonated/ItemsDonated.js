@@ -54,8 +54,8 @@ class ItemsDonated extends Component {
         }
         
             //if claimed item not collected
-            var dt=new Date(element.date);
-            dt.setDate(dt.getDate()+1);
+            //var dt=new Date(element.date);
+            //dt.setDate(dt.getDate()+1);
            // console.log(dt);
             //need to complete
 
