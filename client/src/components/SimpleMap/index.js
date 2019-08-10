@@ -9,8 +9,10 @@ const style = {
     position: 'relative'
 }
 
+
 class SimpleMap extends Component {
     state = {
+        stocks: []
     }
 
     componentDidMount() {
@@ -26,6 +28,10 @@ class SimpleMap extends Component {
             //     lng: position.coords.longitude
             // };
         })
+    }
+
+    userLocation() {
+
     }
 
     render() {
@@ -50,7 +56,8 @@ class SimpleMap extends Component {
                                 </div> */}
                         </InfoWindow>
                     </Map >) : (
-                        <p>Map not ready</p>
+                        // <p>Map not ready</p>
+                        <img src='/mr_worldwide.gif' alt="spinner"/>
                     )}
             </div>
         );
