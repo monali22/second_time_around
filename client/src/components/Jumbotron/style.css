@@ -5,6 +5,7 @@
     color:black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius:0;
 }
 
 .maintext {
@@ -37,6 +38,8 @@
     color:white;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 40px;
+    border-radius: 24px;
+    /* border-radius:0; */
   }
 
 /* .currentpost{
