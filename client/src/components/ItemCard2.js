@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import API from "../utils/API"
 import "./itemcardstyle.css";
 
-   class ItemCard extends Component{
+   class ItemCard2 extends Component{
     
 
    state={
@@ -76,8 +76,8 @@ handleClick=(id)=>{
           <div className="card-body">
             <h5 className="sectiontitle card-title">{this.props.item.itemName}</h5>
             <hr></hr>
-            <p className="cardcontent card-text">Pick it up at {this.props.item.Address}</p>
-            <p className="cardcontent card-text">This item was posted on {this.props.item.date}. Hurry up it's only available for 5 days!</p>
+            <p className="cardcontent card-text">Address: {this.props.item.Address}</p>
+            <p className="cardcontent card-text">Post date: {this.props.item.date}</p>
             {/* <p>Items available for 5 days after posting</p> */}
           </div>
           {/*<!-- Button trigger modal -->*/}
@@ -123,4 +123,4 @@ handleClick=(id)=>{
     );
   }
 }
-export default ItemCard;
+export default ItemCard2;

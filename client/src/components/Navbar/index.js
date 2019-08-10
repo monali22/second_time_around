@@ -84,16 +84,8 @@ class Navbar extends React.Component {
                 </a>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <input
-                className="navstyle form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
 
-            <a href="/profile"><button className="navbutton btn btn-warning my-2 btn-sm">Profile</button></a>
+            <a href="/profile"><button className="navbuttonprofile btn btn-warning my-2 btn-sm">Profile</button></a>
               
               {(localStorage.getItem("nameId")!=null)?<SignOutButton />:<LoginButton />}
           </div>

@@ -47,5 +47,20 @@ module.exports = {
           }
         }
       );
+      },
+      findUserDataId: function(req, res) {
+        console.log(req.query);
+        console.log('inside find one function')
+        db.StockData.find(req.query).then(data=> {
+          console.log('inside db query')
+          console.log(data);
+            // console.log("dbModel"+ dbModel);
+            res.json(data); 
+          }).catch(err => {
+            console.log('inside error catch')
+            res.status(422).json(err)
+          });
       }
+
+      
 }

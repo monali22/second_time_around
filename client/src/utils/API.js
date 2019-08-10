@@ -35,4 +35,10 @@ export default{
     getUData: function(){
       return axios.get("http://localhost:3001/api/user/");
     },
+    findUserID:function(id){
+      return axios.get("http://localhost:3001/api/user/id" + id);
+    },
+    getUSerData: function(id){
+      return axios.get("http://localhost:3001/api/stock/?user_id="+id);
+    },
 };
