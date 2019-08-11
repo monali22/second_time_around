@@ -38,4 +38,7 @@ export default{
     getUData: function(){
       return axios.get("http://localhost:3001/api/user/");
     },
+    getAddressData: function(){
+      return axios.get("http://localhost:3001/api/address");
+    }
 };
