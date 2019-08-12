@@ -12,8 +12,6 @@ const style = {
 
 }
 
-
-
 class SimpleMap extends Component {
 
     // Grabs donate-user's location
@@ -21,12 +19,16 @@ class SimpleMap extends Component {
         stocks: []
     }
 
-    donateUserLocation() {
-        // Transforms a location into geographic coordinates (i.e. latitude and longitude) 
+
+
+    componentDidMount() {
+
+
+        // provided an address and Geocode will provide a lat and lng coordinate
         Geocode.setApiKey("AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8")
         Geocode.enableDebug();
         // Get latidude & longitude from address.
-        Geocode.fromAddress("3716 South Brandon Street, Seattle, WA 98118, USA").then(
+        Geocode.fromAddress("2210 Westlake Ave, Seattle, WA 98121").then(
             response => {
                 const { lat, lng } = response.results[0].geometry.location;
                 console.log(lat, lng);
@@ -36,16 +38,10 @@ class SimpleMap extends Component {
                 console.error(error);
             }
         );
-    }
 
-    componentDidMount() {
 
-        API.getAddressData()
-            .then(res => {
-                console.log('hello map testing');
-                console.log(res.data);
-            })
-            .catch(err => console.log(err));
+
+
 
         // Google Geolocation Position
         navigator.geolocation.getCurrentPosition((position) => {
@@ -55,16 +51,21 @@ class SimpleMap extends Component {
             this.setState({
                 position
             })
-            // var pos = {
-            //     lat: position.coords.latitude,
-            //     lng: position.coords.longitude
-            // };
         })
     }
 
-    userLocation() {
+    donateUserLocation = query => {
+        API.getAddressData(query)
+            .then(res => {
+                console.log('hello map testing');
+                console.log(res.data);
+            })
+            .catch(err => console.log(err));
+    };
 
-    }
+    
+
+
 
     render() {
         return (
@@ -78,11 +79,21 @@ class SimpleMap extends Component {
                                 lat: this.state.position.coords.latitude,
                                 lng: this.state.position.coords.longitude
                             }}
-                            zoom={15}
+                            zoom={10}
                             onClick={this.onMapClicked}
                         >
                             <Marker onClick={this.onMarkerClick}
-                                name={'Current location'} />
+                                name={'Current location'}
+                                // icon={{
+                                //     url: "https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-container-bg_4x.png,icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1502-shape_star_4x.png&highlight=ff000000,0288D1,ff000000&scale=2.0",
+                                //     anchor: new google.maps.Point(32,32),
+                                //     scaledSize: new google.maps.Size(64,64)
+                                 />
+
+                            {/* <Marker onClick={this.onMarkerClick}
+                                name={'Seattle'}
+                                position={{lat: , lng: -lng}} /> */}
+
                             <InfoWindow onClose={this.onInfoWindowClose}>
                                 {/* <div>
                                 <h1>{this.state.selectedPlace.name}</h1>
@@ -92,6 +103,10 @@ class SimpleMap extends Component {
                             // <p>Map not ready</p>
                             <img src={spinner2} alt="spinner" />
                         )
+
+
+
+                        
                 }
             </div >
         );

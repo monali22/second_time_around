@@ -15,9 +15,9 @@ function Home() {
             </CardWrapper>
                 <ShippingHelp/>
             
-            <MapWrapper>
+            {/* <MapWrapper>
                 <SimpleMap />
-            </MapWrapper>
+            </MapWrapper> */}
         </div>
     );
 }
