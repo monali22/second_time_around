@@ -7,8 +7,9 @@ import spinner from "../components/SimpleMap/mr_worldwide.gif"
 
 
 const style = {
-  width: '100%',
+  width: '90%',
   height: '100%',
+
 
 }
 
@@ -48,8 +49,7 @@ class ItemCard extends Component {
     );
   }
 
-
-  componentDidMount() {
+componentDidMount() {
     // Google Geolocation Position
     navigator.geolocation.getCurrentPosition((position) => {
       // console.log("Geolocation Testing");
@@ -87,12 +87,7 @@ class ItemCard extends Component {
 
   };
 
-
-
-
-
-
-  updatePost = () => {
+updatePost = () => {
     console.log(this.state.claimed_date);
     console.log(this.state.idtest);
     // console.log("gafsgas");
