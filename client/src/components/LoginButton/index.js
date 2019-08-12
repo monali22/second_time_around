@@ -7,7 +7,6 @@ import SocialLogin from '@majac/react-social-login';
 import { FacebookLoginButton } from "react-social-login-buttons";
 import { GoogleLoginButton } from "react-social-login-buttons";
 import API from "../../utils/API";
-
 const customStyles = {
   content: {
     top: '50%',
@@ -21,11 +20,9 @@ const customStyles = {
   }
 };
 
-
 const styleLogIn = {
   "marginLeft": "1px"
 }
-
 Modal.setAppElement('#main')
 class LoginButton extends React.Component {
   printConsole() {
@@ -49,14 +46,10 @@ class LoginButton extends React.Component {
   // this.afterOpenModal = this.afterOpenModal.bind(this);
   // this.closeModal = this.closeModal.bind(this);
 
-
   openModal = (e) => {
     e.preventDefault();
     this.setState({ modalIsOpen: true });
-
-
   }
-
   afterOpenModal = () => {
     // references are now sync'd and can be accessed.
     this.subtitle.style.color = 'blue';
@@ -65,11 +58,11 @@ class LoginButton extends React.Component {
     this.subBtn.style.color = "white";
     this.subBtn.style.marginLeft = "40%";
 
-
   }
 
   closeModal = () => {
     this.setState({ modalIsOpen: false });
+
   }
   postData = (e) => {
     e.preventDefault();
@@ -99,7 +92,7 @@ class LoginButton extends React.Component {
       }
 
       API.findUser(this.state.email).then(res => {
-        console.log(res.data.length === 0);
+        console.log('test',res.data);
         if (res.data.length === 0) {
           console.log("not there");
           API.saveUser(newPost)
@@ -124,8 +117,6 @@ class LoginButton extends React.Component {
 
       //console.log("newPost", newPost);
 
-
-
     }
   };
 
@@ -133,8 +124,8 @@ class LoginButton extends React.Component {
     return (
       <div>
         <button className="navbutton btn btn-warning my-2 btn-sm" style={styleLogIn} onClick={this.openModal} >
-          Log In
-            </button>
+          {this.props.name}
+        </button>
 
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -175,6 +166,7 @@ class LoginButton extends React.Component {
                       this.setState({ email: res.email, name: res.name, picture: res.picture });
                       this.handleFormSubmit();
                       this.closeModal();
+                      { window.location.reload("true") }
                     },
                     onFail: error => {
                       console.log('Login Fail', error);
@@ -192,6 +184,7 @@ class LoginButton extends React.Component {
                       this.setState({ email: res.email, name: res.first_name + " " + res.last_name, picture: res.picture });
                       this.handleFormSubmit();
                       this.closeModal();
+                       { window.location.reload("true") }
                     },
                     onFail: error => {
                       console.log('Login Fail', error);
@@ -216,9 +209,6 @@ class LoginButton extends React.Component {
       </div>
     )
   }
-
-
-
 }
 
 export default LoginButton;

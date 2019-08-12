@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./style.css";
 import API from "../../utils/API";
 import Webcam from "react-webcam";
+import LoginButton from "../LoginButton";
 
 
 //import { SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION } from "constants";
@@ -180,8 +181,9 @@ class PostForm extends Component {
               </div>
 
             </form>
-            <button type="submit" data-toggle="modal" data-target="#exampleModalCenter" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
-              this.state.quantity)} onClick={this.handleFormSubmit}>Confirm</button>
+            {(localStorage.getItem("nameId")!=null)?<button type="submit" data-toggle="modal" data-target="#exampleModalCenter" className="navbutton btn btn-warning my-2 btn-sm" value="Submit" disabled={!(this.state.item &&
+              this.state.quantity)} onClick={this.handleFormSubmit}>Confirm</button>:<LoginButton  name={"Submit"}/>}
+            
           </div>
         </div>
         <div>
