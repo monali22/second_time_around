@@ -14,6 +14,8 @@ import {Link } from "react-router-dom"
 
 class Navbar extends React.Component {
 
+  state={}
+
   ifLoginClicked = () => {
     this.setState({ isLoggedIn: true });
   }

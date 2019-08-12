@@ -56,11 +56,11 @@ class PostForm extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    if(localStorage.getItem("nameId")===null){
-      // alert("not logged in");
+    // if(localStorage.getItem("nameId")===null){
+    //   // alert("not logged in");
      
-    }
-    else{
+    // }
+    // else{
     if (this.state.item && this.state.quantity) {
       const newPost = {
         itemName: this.state.item,
@@ -78,7 +78,7 @@ class PostForm extends Component {
           this.getDataById(res.data._id);
         })
         .catch(err => console.log(err));
-    }}
+    }//}
   };
 
   
