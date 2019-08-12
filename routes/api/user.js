@@ -10,6 +10,9 @@ router.route("/")
   router.route("/")
   .put(userController.update);
 
+  router.route("/:id")
+  .get(userController.findId);
+
   router.route("/findoneuser").get(userController.find);
 
   module.exports = router;
