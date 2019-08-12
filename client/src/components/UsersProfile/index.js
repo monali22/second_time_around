@@ -5,10 +5,10 @@ import API from "../../utils/API";
 function UsersProfile() {
     return (
         <div>
-            <div className="offset-3 col-md-6">
+            {/* <div className="offset-3 col-md-6">
                 <h3 className="card-title sectiontitle">Username | previous activity</h3>
                 <hr></hr>
-            </div>
+            </div> */}
             <div className="col-md-4" >
                 <div className="card cardstyle">
                     <img className="card-img-top" src="" width="100px" height="200px"></img>
