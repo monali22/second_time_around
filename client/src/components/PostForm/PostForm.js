@@ -163,6 +163,7 @@ class PostForm extends Component {
                 <label >Include an image</label>
                 <input type="file" id="images" placeholder="Images" multiple onChange={this.uploadFile} />
               </div>
+              
               {/* UPLOAD FROM CAMERA */}
               <div>
 
