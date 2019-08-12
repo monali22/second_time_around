@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from "../utils/API"
 import "./itemcardstyle.css";
+var dateFormat = require('dateformat');
 
    class ItemCard extends Component{
     
@@ -8,7 +9,7 @@ import "./itemcardstyle.css";
    state={
      number:"",
      //claimed_date:"",
-     text:"claime",
+     text:"Claim it",
      idtest:""
    }
    handleInputChange = event => {
@@ -77,11 +78,15 @@ handleClick=(id)=>{
             <h5 className="sectiontitle card-title">{this.props.item.itemName}</h5>
             <hr></hr>
             <p className="cardcontent card-text">Pick it up at {this.props.item.Address}</p>
-            <p className="cardcontent card-text">This item was posted on {this.props.item.date}. Hurry up it's oly available for 5 days!</p>
+            <p className="cardcontent card-text">Posted Date: {dateFormat(this.props.item.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")}   Hurry up it's only available for 5 days!</p>
             {/* <p>Items available for 5 days after posting</p> */}
           </div>
           {/*<!-- Button trigger modal -->*/}
-          <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"  onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
+          <div className="col-md-4">
+                        <div className="">
+                        <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1"  onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
+                        </div>
+                    </div>
           {/*<!-- Modal -->*/}
           <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -108,7 +113,7 @@ handleClick=(id)=>{
 
                   </form>
                   <div className="modal-footer">
-                    <button type="button" value="Submit" className="navbutton btn btn-warning my-2 btn-sm" onClick={this.updatePost}>Submit</button>
+                    <button type="button" value="Submit" className="navbutton btn btn-warning my-2 btn-sm" data-dismiss="modal" onClick={this.updatePost} >Submit</button>
                   </div>
                 </div>
               </div>

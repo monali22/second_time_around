@@ -1,10 +1,12 @@
 .jumbotron {
     font-weight: bold;
     background-image: url("https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    /* background-image: url("https://cdn.dribbble.com/users/470545/screenshots/3607374/moving-drib.gif"); */
     background-size: cover;
     color:black;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius:0;
 }
 
 .maintext {
@@ -37,6 +39,8 @@
     color:white;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 40px;
+    border-radius: 24px;
+    /* border-radius:0; */
   }
 
 /* .currentpost{
