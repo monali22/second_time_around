@@ -61,7 +61,7 @@ class ItemsDonated extends Component {
         
 
 
-      /*
+      
         console.log("ggggggggg");
         var todays_date=new Date(); 
         this.state.stock_check.map(item=>{
@@ -69,9 +69,21 @@ class ItemsDonated extends Component {
           //console.log(item.date);
          
           var post_dt=new Date(item.date);
-          post_dt.setDate(post_dt.getDate()+2);
+          post_dt.setDate(post_dt.getDate()+6);
           if(post_dt<todays_date){
-            console.log(post_dt);
+            //console.log(item.date);
+            
+              //console.log("inside delete"+id);
+              API.deleteData(item._id)
+                .then(res => {
+                  
+                  //console.log(res.data+"successfully deleted");
+                  console.log("successfully deleted post");
+                  //console.log(this.state.stock_arr.itemName);
+                }
+                )
+                .catch(err => console.log(err));
+            
            // console.log(item.date);
             //console.log(item.date);
           }
@@ -79,7 +91,7 @@ class ItemsDonated extends Component {
             console.log("no");
           }
         })
-         */   //if claimed item not collected
+         //if claimed item not collected
             //var dt=new Date(element.date);
             //dt.setDate(dt.getDate()+1);
            // console.log(dt);
@@ -101,7 +113,7 @@ class ItemsDonated extends Component {
         console.log(res.data);
       }
 
-      )
+      ) .catch(err => console.log(err));
    
 
 
@@ -119,7 +131,7 @@ class ItemsDonated extends Component {
    // console.log(this.state.stocks.length);
     return (
       <div className="row">
-        {this.state.stocks.length > 1 && this.state.stocks.map(stock =>
+        {this.state.stocks.length > 0 && this.state.stocks.map(stock =>
         
           
           <ItemCard item={stock} key={stock.stock_id} />)}
