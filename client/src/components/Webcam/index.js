@@ -1,71 +1,63 @@
-export class Webcam {
-    constructor(webcamElement, canvasElement) {
-      this.webcamElement = webcamElement;
-      this.canvasElement = canvasElement;
-    }
+import React from "react";
+import Webcam from "react-webcam";
+ 
 
-    adjustVideoSize(width, height) {
-      const aspectRatio = width / height;
-      if (width >= height) {
-          this.webcamElement.width = aspectRatio * this.webcamElement.height;
-      } else  {
-          this.webcamElement.height = this.webcamElement.width / aspectRatio;
-      }
+class WebcamCapture extends React.Component {
+  setRef = webcam => {
+    this.webcam = webcam;
+  };
+ 
+  capture = () => {
+    const imageSrc = this.webcam.getScreenshot();
+    this.uploadFile(imageSrc);
+  };
+ 
+  render() {
+    const videoConstraints = {
+      width: 1280,
+      height: 720,
+      facingMode: "user"
+    };
+ 
+    return (
+      <div>
+        <Webcam
+          audio={false}
+          height={350}
+          ref={this.setRef}
+          screenshotFormat="image/jpeg"
+          width={350}
+          videoConstraints={videoConstraints}
+        />
+        <button onClick={this.capture}>Capture photo</button>
+      </div>
+    );
+  }
+  
+  dataURItoBlob = dataURI => {
+    var binary = atob(dataURI.split(',')[1]);
+    var array = [];
+    for(var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
     }
-    async setup() {
-        return new Promise((resolve, reject) => {
-          if (navigator.mediaDevices.getUserMedia !== undefined) {
-            navigator.mediaDevices.getUserMedia({
-                audio: false, video: { facingMode: 'user' }
-                })
-                .then((mediaStream) => {
-                    if ("srcObject" in this.webcamElement) {
-                        this.webcamElement.srcObject = mediaStream;
-                    } else {
-                        // For older browsers without the srcObject.
-                        this.webcamElement.src = window.URL.createObjectURL(mediaStream);
-                    }
-                    this.webcamElement.addEventListener(
-                        'loadeddata',
-                        async () => {
-                            this.adjustVideoSize(
-                                this.webcamElement.videoWidth,
-                                this.webcamElement.videoHeight
-                            );
-                            resolve();
-                        },
-                        false
-                    );
-                });
-          } else {
-              reject();
-          }
+    return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
+}
+
+  uploadFile = encodedImageString => {
+    const formData = new FormData();
+
+    formData.append(0, this.dataURItoBlob(encodedImageString));
+
+    //sends the img to server
+    fetch(`http://localhost:3001/image-upload`, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(images => {
+        console.log(images[0].url);
       });
-      }
-      _drawImage() {
-        const imageWidth = this.webcamElement.videoWidth;
-        const imageHeight = this.webcamElement.videoHeight;
+  }
+}
 
-        const context = this.canvasElement.getContext('2d');
-        this.canvasElement.width = imageWidth;
-        this.canvasElement.height = imageHeight;
-
-        context.drawImage(this.webcamElement, 0, 0, imageWidth, imageHeight);
-        return { imageHeight, imageWidth };
-      }
-
-      takeBlobPhoto() {
-        const { imageWidth, imageHeight } = this._drawImage();
-        return new Promise((resolve, reject) => {
-            this.canvasElement.toBlob((blob) => {
-                resolve({ blob, imageHeight, imageWidth });
-            });
-        });
-      }
-
-      takeBase64Photo({ type, quality } = { type: 'png', quality: 1 }) {
-        const { imageHeight, imageWidth } = this._drawImage();
-        const base64 = this.canvasElement.toDataURL('image/' + type, quality);
-        return { base64, imageHeight, imageWidth };
-      }
-    }
+export default WebcamCapture;
