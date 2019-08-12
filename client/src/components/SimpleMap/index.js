@@ -22,31 +22,43 @@ class SimpleMap extends Component {
 
 
     componentDidMount() {
+        console.log("TRYING");
+        
 
 
         // provided an address and Geocode will provide a lat and lng coordinate
         Geocode.setApiKey("AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8")
+        
         Geocode.enableDebug();
         // Get latidude & longitude from address.
         Geocode.fromAddress("2210 Westlake Ave, Seattle, WA 98121").then(
             response => {
                 const { lat, lng } = response.results[0].geometry.location;
                 console.log(lat, lng);
-                console.log('geocode test');
+                console.log('geocode test in simple map');
             },
             error => {
+                console.log('testing for errors');
+                
                 console.error(error);
             }
         );
 
-
-
-
+        // Geocode.fromLatLng("48.8583701", "2.2922926").then(
+        //     response => {
+        //       const address = response.results[0].formatted_address;
+        //       console.log(address);
+        //     },
+        //     error => {
+        //       console.log('testing for errors');
+        //       console.error(error);
+        //     }
+        //   );
 
         // Google Geolocation Position
         navigator.geolocation.getCurrentPosition((position) => {
-            console.log("Geolocation Testing");
-            console.log(position)
+            // console.log("Geolocation Testing");
+            // console.log(position)
 
             this.setState({
                 position

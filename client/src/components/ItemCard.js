@@ -4,6 +4,7 @@ import "./itemcardstyle.css";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Geocode from "react-geocode";
 
+
 const style = {
   width: '100%',
   height: '100%',
@@ -24,16 +25,22 @@ class ItemCard extends Component {
 
   // User provides an address and Geocode will provide the lat and lng coordinates
   getUserCoordinates = address => {
+    console.log('getUserCoordinate test', address)
     Geocode.setApiKey("AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8")
     Geocode.enableDebug();
     // Get latidude & longitude from address.
     Geocode.fromAddress(address).then(
       response => {
-        const { latd, lngd } = response.results[0].geometry.location;
-        console.log('donate user ', latd, lngd);
+        const { lat, lng } = response.results[0].geometry.location;
+        this.setState({
+          latd: lat,
+          lngd: lng
+        });
+        console.log('donate user ', lat, lng);
         // console.log('donate user');
       },
       error => {
+        console.log('getUserCoordinate test err', address)
         console.error(error);
       }
     );
@@ -43,8 +50,8 @@ class ItemCard extends Component {
   componentDidMount() {
     // Google Geolocation Position
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log("Geolocation Testing");
-      console.log(position)
+      // console.log("Geolocation Testing");
+      // console.log(position)
 
       this.setState({
         position
@@ -161,7 +168,7 @@ class ItemCard extends Component {
 
     {/* Testing Map Feature */}
     {/*<!-- Button trigger modal --> */}
-<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter">
+<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter" onClick={()=> this.getUserCoordinates(this.props.item.Address)}>
   Location
 </button>
 
@@ -178,11 +185,11 @@ class ItemCard extends Component {
       <div className="modal-body">
     
       <div>
-      {this.getUserCoordinates(this.props.item.Address)}
+      {/* {this.getUserCoordinates(this.props.item.Address)} */}
                  
                   {/* Google Maps*/}
                   {
-                    this.state.position ?
+                    this.state.latd ?
                       (<Map
                         google={this.props.google}
                         style={style}
@@ -198,7 +205,7 @@ class ItemCard extends Component {
 
                         <Marker onClick={this.onMarkerClick}
                         name={'user'}
-                        position={{ lat: 47.6062 , lng: -122.3321  }} 
+                        position={{ lat: this.state.latd , lng: this.state.lngd }} 
                         icon={{
                           url: "https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-container-bg_4x.png,icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1502-shape_star_4x.png&highlight=ff000000,0288D1,ff000000&scale=1.0",
                           
