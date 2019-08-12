@@ -24,10 +24,7 @@ export default{
       return axios.post("http://localhost:3001/api/freeItems",msg);
     },
     saveUser : function(userData){
-      return axios.post("http://localhost:3001/api/user",userData).then(res=> {const token = res.data.token;
-        localStorage.setItem("jwtToken",token);
-    }
-      );
+      return axios.post("http://localhost:3001/api/user",userData);
     },
     updateUserData:function(name,data){
       return axios.put("http://localhost:3001/api/user/:"+name,{data});
@@ -38,7 +35,10 @@ export default{
     getUData: function(){
       return axios.get("http://localhost:3001/api/user/");
     },
-    getAddressData: function(){
-      return axios.get("http://localhost:3001/api/address");
-    }
+    findUserID:function(id){
+      return axios.get("http://localhost:3001/api/user/" + id);
+    },
+    getUSerData: function(id){
+      return axios.get("http://localhost:3001/api/stock/?user_id="+id);
+    },
 };

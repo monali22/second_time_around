@@ -3,6 +3,7 @@ import API from "../utils/API";
 import "./itemcardstyle.css";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Geocode from "react-geocode";
+import spinner from "../components/SimpleMap/mr_worldwide.gif"
 
 
 const style = {
@@ -18,8 +19,9 @@ class ItemCard extends Component {
     number: "",
     //claimed_date:"",
     text: "Claim it",
-    mapAddress: "Location",
-    idtest: "",
+    // mapAddress: "Location",
+    // idtest: "",
+    position: ""
 
   }
 
@@ -131,11 +133,11 @@ class ItemCard extends Component {
           {/*<!-- Button trigger modal for Claim it -->*/}
           <div className="col-md-4">
             <div className="">
-              <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target="#exampleModalCenter1" onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
+              <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle={"modal" + this.props.item._id } data-target="#exampleModalCenter1" onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
             </div>
           </div>
           {/*<!-- Modal for Claim it -->*/}
-          <div className="modal fade" id="exampleModalCenter1" tabIndex="-1" role="dialog"
+          <div className="modal fade" id={"exampleModalCenter1" + this.props.item._id} tabIndex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered" role="document">
               <div className="modal-content">
@@ -168,12 +170,12 @@ class ItemCard extends Component {
 
     {/* Testing Map Feature */}
     {/*<!-- Button trigger modal --> */}
-<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#exampleModalCenter" onClick={()=> this.getUserCoordinates(this.props.item.Address)}>
+<button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter" + this.props.item._id} onClick={()=> this.getUserCoordinates(this.props.item.Address)}>
   Location
 </button>
 
 {/*<!-- Modal -->*/}
-<div className="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div className="modal fade" id={"exampleModalCenter" +this.props.item._id} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
     <div className="modal-content">
       <div className="modal-header">
@@ -182,14 +184,15 @@ class ItemCard extends Component {
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div className="modal-body">
+      <div className="modal-body address-map">
     
       <div>
       {/* {this.getUserCoordinates(this.props.item.Address)} */}
                  
                   {/* Google Maps*/}
                   {
-                    this.state.latd ?
+                    // apiKey= "AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8";
+                    this.state.position ?
                       (<Map
                         google={this.props.google}
                         style={style}
@@ -201,22 +204,24 @@ class ItemCard extends Component {
                         onClick={this.onMapClicked}
                       >
                         <Marker onClick={this.onMarkerClick}
-                          name={'Current location'} />
+                          name={'Current location'}
+                          title={'Current Location'} />
 
                         <Marker onClick={this.onMarkerClick}
                         name={'user'}
+                        title={"Item's Address"}
                         position={{ lat: this.state.latd , lng: this.state.lngd }} 
                         icon={{
-                          url: "https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-container-bg_4x.png,icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1502-shape_star_4x.png&highlight=ff000000,0288D1,ff000000&scale=1.0",
+                          url: "https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-container-bg_4x.png,icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1502-shape_star_4x.png&highlight=ff000000,0288D1,ff000000&scale=0.9",
                           
                         }} />
 
                         
                       </Map >) : (
-                        <p>waiting for map to load</p>
+                        // <p>waiting for map to load</p>
                         
                         
-                        // <img src={spinner2} alt="spinner" />
+                        <img src={spinner} alt="spinner" style={{height: '300px', align: 'center'}} />
                       )
                   }
         </div>
