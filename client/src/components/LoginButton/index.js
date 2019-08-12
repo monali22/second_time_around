@@ -70,6 +70,7 @@ class LoginButton extends React.Component {
 
   closeModal = () => {
     this.setState({ modalIsOpen: false });
+    
   }
   postData = (e) => {
     e.preventDefault();
@@ -133,7 +134,7 @@ class LoginButton extends React.Component {
     return (
       <div>
         <button className="navbutton btn btn-warning my-2 btn-sm" style={styleLogIn} onClick={this.openModal} >
-          Log In
+         {this.props.name}
             </button>
 
         <Modal
@@ -175,6 +176,7 @@ class LoginButton extends React.Component {
                       this.setState({ email: res.email, name: res.name, picture: res.picture });
                       this.handleFormSubmit();
                       this.closeModal();
+                      {window.location.reload("true")}
                     },
                     onFail: error => {
                       console.log('Login Fail', error);
@@ -192,6 +194,7 @@ class LoginButton extends React.Component {
                       this.setState({ email: res.email, name: res.first_name + " " + res.last_name, picture: res.picture });
                       this.handleFormSubmit();
                       this.closeModal();
+                      {window.location.reload("true")}
                     },
                     onFail: error => {
                       console.log('Login Fail', error);
