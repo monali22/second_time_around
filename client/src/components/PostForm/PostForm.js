@@ -234,7 +234,7 @@ class PostForm extends Component {
       formData.append(i, file)
     })
 
-    const request = fetch(`https://second-time-around.herokuapp.com/image-upload`, {
+    const request = fetch(`http://localhost:3001/image-upload`, {
       method: 'POST',
       body: formData
     });

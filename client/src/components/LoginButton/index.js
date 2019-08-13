@@ -82,17 +82,14 @@ class LoginButton extends React.Component {
   }
 
   handleFormSubmit = () => {
+    const newPost = {
+          name: this.state.name,
+          picture: this.state.picture,
+          email: this.state.email
+        }
     console.log("In handle submit");
-    // event.preventDefault();
-    if (this.state.email) {
-      const newPost = {
-        name: this.state.name,
-        picture: this.state.picture,
-        email: this.state.email
-      }
-
-      API.findUser(this.state.email).then(res => {
-        console.log('test',res.data);
+    API.findUser(this.state.email).then(res=>{
+      console.log('test',res.data);
         if (res.data.length === 0) {
           console.log("not there");
           API.saveUser(newPost)
@@ -111,13 +108,42 @@ class LoginButton extends React.Component {
           localStorage.setItem("nameId", res.data[0]._id);
         }
 
-      }
-      )
-        .catch(err => console.log(err));
+    }).catch(err => console.log(err));
+    // event.preventDefault();
+    // if (this.state.email) {
+    //   const newPost = {
+    //     name: this.state.name,
+    //     picture: this.state.picture,
+    //     email: this.state.email
+    //   }
 
-      //console.log("newPost", newPost);
+    //   API.findUser(this.state.email).then(res => {
+    //     console.log('test',res.data);
+    //     if (res.data.length === 0) {
+    //       console.log("not there");
+    //       API.saveUser(newPost)
+    //         .then(res2 => {
 
-    }
+    //           //console.log(res.data);
+    //           localStorage.clear();
+    //           localStorage.setItem("nameId", res2.data._id);
+    //           this.setState({ user_id: res2.data._id });
+    //         }
+    //         )
+    //         .catch(err => console.log(err));
+    //     } else {
+    //       console.log(res);
+    //       localStorage.clear();
+    //       localStorage.setItem("nameId", res.data[0]._id);
+    //     }
+
+    //   }
+    //   )
+    //     .catch(err => console.log(err));
+
+    //   //console.log("newPost", newPost);
+
+    // }
   };
 
   render() {
