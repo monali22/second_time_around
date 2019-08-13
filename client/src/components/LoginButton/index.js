@@ -139,7 +139,7 @@ class LoginButton extends React.Component {
           <div className="divSide">
             <div class="container">
               <div class="vertical-center">
-                <h1 className="sectiontitle">Reduce, reuse, recyle</h1>
+                {/* <h1 className="sectiontitle">Reduce, reuse, recyle</h1> */}
                 {/* <ul className="ulHelp">
                     <p><i className="fa fa-camera"></i> Post listings</p>
                     <p><i className='fas fa-comments'></i> Chat with buyers and sellers</p>
@@ -152,10 +152,11 @@ class LoginButton extends React.Component {
           <div className="loginStuff">
             <div class="container">
               <div class="vertical-center">
-                <h3 className="logologin">Second Time Around</h3>
-                <hr></hr>
+              {/* <img className="navstylelogo navbar-brand logo" src={require('../Navbar/logo.png')} height="80" class="d-inline-block align-top logoimg" alt="secondtime"/> */}
+                {/* <h3 className="logologin">Second Time Around</h3> */}
+                {/* <hr></hr>
                 <p className="subTitle">Take and give quickly, safely and locally!</p>
-                <br></br>
+                <br></br> */}
                 <p className="socialLoginLine"><span>Quickly Connect with</span></p>
                 <SocialLogin
                   options={{
