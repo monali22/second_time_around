@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from "../utils/API"
 import "./itemcardstyle.css";
+var dateFormat = require('dateformat');
 
 class ItemCard extends Component {
 
@@ -76,7 +77,7 @@ class ItemCard extends Component {
               <h5 className="sectiontitle card-title">{this.props.item.itemName}</h5>
               <hr></hr>
               <p className="cardcontent card-text">Pick it up at {this.props.item.Address}</p>
-              <p className="cardcontent card-text">This item was posted on {this.props.item.date}.</p>
+              <p className="cardcontent card-text">This item was posted on  {dateFormat(this.props.item.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")} .</p>
               {/* <p>Items available for 5 days after posting</p> */}
             </div>
             {/*<!-- Button trigger modal -->*/}
