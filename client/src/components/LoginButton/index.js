@@ -90,7 +90,7 @@ class LoginButton extends React.Component {
         picture: this.state.picture,
         email: this.state.email
       }
-
+      console.log('email exists',newPost)
       API.findUser(this.state.email).then(res => {
         console.log('test',res.data);
         if (res.data.length === 0) {
@@ -162,11 +162,11 @@ class LoginButton extends React.Component {
                     provider: 'facebook',
                     appId: this.state.facebook,
                     onSuccess: res => {
-                      //console.log('Login Success', res);
+                      console.log('Login Success', res);
                       this.setState({ email: res.email, name: res.name, picture: res.picture });
                       this.handleFormSubmit();
                       this.closeModal();
-                      { window.location.reload("true") }
+                      // { window.location.reload("true") }
                     },
                     onFail: error => {
                       console.log('Login Fail', error);
@@ -180,11 +180,11 @@ class LoginButton extends React.Component {
                     provider: 'google',
                     appId: this.state.google,
                     onSuccess: res => {
-                      //console.log('Login Success', res);
+                      console.log('Login Success', res);
                       this.setState({ email: res.email, name: res.first_name + " " + res.last_name, picture: res.picture });
                       this.handleFormSubmit();
                       this.closeModal();
-                       { window.location.reload("true") }
+                      //  { window.location.reload("true") }
                     },
                     onFail: error => {
                       console.log('Login Fail', error);
