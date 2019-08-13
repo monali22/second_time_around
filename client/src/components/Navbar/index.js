@@ -42,7 +42,8 @@ class Navbar extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light">
 
           <Link className="navstylelogo navbar-brand logo" to="/">
-            Second time around
+            {/* Second time around */}
+            <img className="navstylelogo navbar-brand logo" src={require('./logo.png')} height="80" class="d-inline-block align-top logoimg" alt="secondtime"/>
       </Link>
 
 

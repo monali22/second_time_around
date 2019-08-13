@@ -55,7 +55,8 @@ class PostForm extends Component {
       )
       .catch(err => console.log(err));
   };
-
+  
+//Promise.then waits till the promise get solved (waiting for image upload) and then handles submit
   handleFormSubmit = event => {
     event.preventDefault();
     if (this.state.item && this.state.quantity && this.state.imageUploadPromise) {
