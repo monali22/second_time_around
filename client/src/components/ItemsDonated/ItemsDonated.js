@@ -133,7 +133,6 @@ class ItemsDonated extends Component {
       <div className="row">
         {this.state.stocks.length > 0 && this.state.stocks.map(stock =>
         
-          
           <ItemCard item={stock} key={stock.stock_id} />)}
       </div>);
   }
