@@ -4,6 +4,8 @@ import "./itemcardstyle.css";
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import Geocode from "react-geocode";
 import spinner from "../components/SimpleMap/mr_worldwide.gif"
+import MapModal from "../components/traesModal";
+var dateFormat = require('dateformat');
 
 
 const style = {
@@ -115,19 +117,25 @@ class ItemCard extends Component {
             <h5 className="sectiontitle card-title">{this.props.item.itemName}</h5>
             <hr></hr>
             <p className="cardcontent card-text">Pick it up at {this.props.item.Address}</p>
-            <p className="cardcontent card-text">This item was posted on {this.props.item.date}.</p>
+            <p className="cardcontent card-text">This item was posted on  {dateFormat(this.props.item.date, "dddd, mmmm dS, yyyy, h:MM:ss TT")} .</p>
             {/* <p>Items available for 5 days after posting</p> */}
           </div>
-          <div className="col-md-4">
-            <div className="">
-              <span>
-                {/*<!-- Button trigger modal for Claim it -->*/}
-                <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter1" + this.props.item._id} onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
-                {/*<!-- Button trigger modal for Maps --> */}
-                <button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter" + this.props.item._id} onClick={() => this.getUserCoordinates(this.props.item.Address)}>Location</button>
-              </span>
-            </div>
+          <div class="card-footer">
+            {/*<!-- Button trigger modal for Claim it -->*/}
+          <span><button type="button" className="navbuttonprofile btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter1" + this.props.item._id} onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
+            {/*<!-- Button trigger modal for Maps --> */}
+            <button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#ModalMap" + this.props.item._id} onClick={() => this.getUserCoordinates(this.props.item.Address)}>Location</button></span>
           </div>
+           
+           <MapModal modalID={this.props.item._id} position={this.state.position} lat={this.state.latd} lng={this.state.lngd}/>
+
+          {/*<!-- Button trigger modal for Claim it -->*/}
+          {/* <div className="col-md-4">
+            <div className="">
+              <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter1" + this.props.item._id} onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
+            </div>
+          </div> */}
+
           {/*<!-- Modal for Claim it -->*/}
           <div className="modal fade" id={"exampleModalCenter1" + this.props.item._id} tabIndex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -160,69 +168,14 @@ class ItemCard extends Component {
             </div>
           </div>
 
-          {/* Google Maps Feature */}
-          {/*<!-- Button trigger modal --> */}
-          {/* <span><button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter" + this.props.item._id} onClick={() => this.getUserCoordinates(this.props.item.Address)}>Location</button></span> */}
+          
 
-          {/*<!-- Modal -->*/}
-          <div className="modal fade" id={"exampleModalCenter" + this.props.item._id} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h5 className="modal-title" id="exampleModalCenterTitle">Location of Item</h5>
-                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body address-map">
-
-                  <div>
-                    {/* {this.getUserCoordinates(this.props.item.Address)} */}
-
-                    {/* Google Maps*/}
-                    {
-                      
-                      this.state.position ?
-                        (<Map
-                          google={this.props.google}
-                          style={style}
-                          initialCenter={{
-                            lat: this.state.position.coords.latitude,
-                            lng: this.state.position.coords.longitude
-                          }}
-                          zoom={10}
-                          onClick={this.onMapClicked}
-                        >
-                          <Marker onClick={this.onMarkerClick}
-                            name={'Current location'}
-                            title={'Current Location'} />
-
-                          <Marker onClick={this.onMarkerClick}
-                            name={'user'}
-                            title={"Item's Address"}
-                            position={{ lat: this.state.latd, lng: this.state.lngd }}
-                            icon={{
-                              url: "https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-container-bg_4x.png,icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1502-shape_star_4x.png&highlight=ff000000,0288D1,ff000000&scale=0.9",
-
-                            }} />
-
-
-                        </Map >) : (
-                          // <p>waiting for map to load</p>
-                          <img src={spinner} alt="Waiting for map to load spinner" style={{ height: '300px', align: 'center' }} />
-                        )
-                    }
-                  </div>
-                </div>
-                <div className="modal-footer">
-                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
+
       </div>
+
+
+
     );
   }
 }
