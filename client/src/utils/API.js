@@ -39,6 +39,6 @@ export default{
       return axios.get("https://second-time-around.herokuapp.com/api/user/" + id);
     },
     getUSerData: function(id){
-      return axios.get("https://second-time-around.herokuapp.com/api/stock/?user_id="+id);
+      return axios.get("https://second-time-around.herokuapp.com/api/user/?user_id="+id);
     },
 };
