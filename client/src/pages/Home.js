@@ -9,11 +9,11 @@ import HurryUpMsg from "../components/HurryUpMsg";
 function Home() {
     return (
         <div>
-                <HurryUpMsg/>
+            <HurryUpMsg/>
             <CardWrapper>
                 <ItemsDonated />
             </CardWrapper>
-                <ShippingHelp/>
+            <ShippingHelp/>
             
              {/* <MapWrapper> */}
                 {/* <SimpleMap /> */}

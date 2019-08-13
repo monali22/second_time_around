@@ -7,14 +7,11 @@ import spinner from "../components/SimpleMap/mr_worldwide.gif"
 
 
 const style = {
-  width: '90%',
+  width: '93%',
   height: '100%',
-
-
 }
 
 class ItemCard extends Component {
-
 
   state = {
     number: "",
@@ -31,7 +28,7 @@ class ItemCard extends Component {
     console.log('getUserCoordinate test', address)
     Geocode.setApiKey("AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8")
     Geocode.enableDebug();
-    // Get latidude & longitude from address.
+    // Get latidude & longitude from address
     Geocode.fromAddress(address).then(
       response => {
         const { lat, lng } = response.results[0].geometry.location;
@@ -49,12 +46,11 @@ class ItemCard extends Component {
     );
   }
 
-componentDidMount() {
+  componentDidMount() {
     // Google Geolocation Position
     navigator.geolocation.getCurrentPosition((position) => {
       // console.log("Geolocation Testing");
       // console.log(position)
-
       this.setState({
         position
       })
@@ -79,15 +75,16 @@ componentDidMount() {
     API.updatePost(id)
       .then(res => {
         console.log(res.data);
-
       })
       .catch(err => console.log(err));
 
-    this.setState({ text: "claimed" })
+    this.setState({
+      text: "claimed"
+    });
 
   };
 
-updatePost = () => {
+  updatePost = () => {
     console.log(this.state.claimed_date);
     console.log(this.state.idtest);
     // console.log("gafsgas");
@@ -98,12 +95,9 @@ updatePost = () => {
 
     API.getEmail(msg)
       .then(res => {
-
         // this.props.updatestock(this.state.stocks);
         console.log(res.data);
-      }
-
-      )
+      })
       .catch(err => console.log(err));
 
   };
@@ -111,7 +105,6 @@ updatePost = () => {
 
 
   render() {
-
     //console.log(this.props.item.itemName);
 
     return (
@@ -125,10 +118,14 @@ updatePost = () => {
             <p className="cardcontent card-text">This item was posted on {this.props.item.date}.</p>
             {/* <p>Items available for 5 days after posting</p> */}
           </div>
-          {/*<!-- Button trigger modal for Claim it -->*/}
           <div className="col-md-4">
             <div className="">
-              <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle={"modal" + this.props.item._id } data-target="#exampleModalCenter1" onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
+              <span>
+                {/*<!-- Button trigger modal for Claim it -->*/}
+                <button type="button" className="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter1" + this.props.item._id} onClick={() => this.handleClick(this.props.item._id)} >{this.state.text}</button>
+                {/*<!-- Button trigger modal for Maps --> */}
+                <button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter" + this.props.item._id} onClick={() => this.getUserCoordinates(this.props.item.Address)}>Location</button>
+              </span>
             </div>
           </div>
           {/*<!-- Modal for Claim it -->*/}
@@ -163,80 +160,76 @@ updatePost = () => {
             </div>
           </div>
 
-    {/* Testing Map Feature */}
-    {/*<!-- Button trigger modal --> */}
-<button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter" + this.props.item._id} onClick={()=> this.getUserCoordinates(this.props.item.Address)}>
-  Location
-</button>
+          {/* Google Maps Feature */}
+          {/*<!-- Button trigger modal --> */}
+          {/* <span><button type="button" class="navbutton btn btn-warning my-2 btn-sm" data-toggle="modal" data-target={"#exampleModalCenter" + this.props.item._id} onClick={() => this.getUserCoordinates(this.props.item.Address)}>Location</button></span> */}
 
-{/*<!-- Modal -->*/}
-<div className="modal fade" id={"exampleModalCenter" +this.props.item._id} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalCenterTitle">Location of Item</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div className="modal-body address-map">
-    
-      <div>
-      {/* {this.getUserCoordinates(this.props.item.Address)} */}
-                 
-                  {/* Google Maps*/}
-                  {
-                    // apiKey= "AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8";
-                    this.state.position ?
-                      (<Map
-                        google={this.props.google}
-                        style={style}
-                        initialCenter={{
-                          lat: this.state.position.coords.latitude,
-                          lng: this.state.position.coords.longitude
-                        }}
-                        zoom={10}
-                        onClick={this.onMapClicked}
-                      >
-                        <Marker onClick={this.onMarkerClick}
-                          name={'Current location'}
-                          title={'Current Location'} />
+          {/*<!-- Modal -->*/}
+          <div className="modal fade" id={"exampleModalCenter" + this.props.item._id} tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="exampleModalCenterTitle">Location of Item</h5>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body address-map">
 
-                        <Marker onClick={this.onMarkerClick}
-                        name={'user'}
-                        title={"Item's Address"}
-                        position={{ lat: this.state.latd , lng: this.state.lngd }} 
-                        icon={{
-                          url: "https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-container-bg_4x.png,icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1502-shape_star_4x.png&highlight=ff000000,0288D1,ff000000&scale=0.9",
-                          
-                        }} />
+                  <div>
+                    {/* {this.getUserCoordinates(this.props.item.Address)} */}
 
-                        
-                      </Map >) : (
-                        // <p>waiting for map to load</p>
-                        
-                        
-                        <img src={spinner} alt="spinner" style={{height: '300px', align: 'center'}} />
-                      )
-                  }
-        </div>
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-      </div>
-    </div>
-  </div>
-</div>
+                    {/* Google Maps*/}
+                    {
+                      
+                      this.state.position ?
+                        (<Map
+                          google={this.props.google}
+                          style={style}
+                          initialCenter={{
+                            lat: this.state.position.coords.latitude,
+                            lng: this.state.position.coords.longitude
+                          }}
+                          zoom={10}
+                          onClick={this.onMapClicked}
+                        >
+                          <Marker onClick={this.onMarkerClick}
+                            name={'Current location'}
+                            title={'Current Location'} />
+
+                          <Marker onClick={this.onMarkerClick}
+                            name={'user'}
+                            title={"Item's Address"}
+                            position={{ lat: this.state.latd, lng: this.state.lngd }}
+                            icon={{
+                              url: "https://mt.google.com/vt/icon/name=icons/onion/SHARED-mymaps-container-bg_4x.png,icons/onion/SHARED-mymaps-container_4x.png,icons/onion/1502-shape_star_4x.png&highlight=ff000000,0288D1,ff000000&scale=0.9",
+
+                            }} />
+
+
+                        </Map >) : (
+                          // <p>waiting for map to load</p>
+                          <img src={spinner} alt="Waiting for map to load spinner" style={{ height: '300px', align: 'center' }} />
+                        )
+                    }
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 }
 
-// export default ItemCard;
+export default ItemCard;
 
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8"
-})(ItemCard);
+// export default GoogleApiWrapper({
+//   apiKey: "AIzaSyC43qVzPHXSL3TaW4zNV8Kwu6a3PdmLcp8"
+// })(ItemCard);

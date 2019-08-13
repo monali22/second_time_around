@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 import API from '../../utils/API';
 // import spinner from '../SimpleMap/mr_worldwide.gif';
-import spinner2 from '../SimpleMap/spinner.gif';
+import spinner from '../SimpleMap/spinner.gif';
 import Geocode from "react-geocode";
 
 
@@ -113,7 +113,7 @@ class SimpleMap extends Component {
                             </InfoWindow>
                         </Map >) : (
                             // <p>Map not ready</p>
-                            <img src={spinner2} alt="spinner" />
+                            <img src={spinner} alt="spinner" />
                         )
 
 
