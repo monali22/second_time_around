@@ -2,43 +2,43 @@ import axios from "axios";
 
 export default{
     savePost: function(postdata){
-      return axios.post("https://second-time-around.herokuapp.com/api/stock",postdata);
+      return axios.post("/api/stock",postdata);
     },
     getDataById: function(id){
-      return axios.get("https://second-time-around.herokuapp.com/api/stock/" + id);
+      return axios.get("/api/stock/" + id);
     },
     getData: function(){
-      return axios.get("https://second-time-around.herokuapp.com/api/stock/");
+      return axios.get("/api/stock/");
     },
     deleteData: function(id) {
-      return axios.delete("https://second-time-around.herokuapp.com/api/stock/" + id);
+      return axios.delete("/api/stock/" + id);
     },
     updatePost:function(id){
-      return axios.post("https://second-time-around.herokuapp.com/api/stock/"+id);
+      return axios.post("/api/stock/"+id);
     },
 // request the information to send it to the server
     saveItem: function(item) {
-      return axios.post("https://second-time-around.herokuapp.com/api/freeItems", item);
+      return axios.post("/api/freeItems", item);
     },
     getEmail:function(msg){
-      return axios.post("https://second-time-around.herokuapp.com/api/freeItems",msg);
+      return axios.post("/api/freeItems",msg);
     },
     saveUser : function(userData){
-      return axios.post("https://second-time-around.herokuapp.com/api/user",userData);
+      return axios.post("/api/user",userData);
     },
     updateUserData:function(name,data){
-      return axios.put("https://second-time-around.herokuapp.com/api/user/:"+name,{data});
+      return axios.put("/api/user/:"+name,{data});
     },
     findUser:function(email){
-      return axios.get("https://second-time-around.herokuapp.com/api/user/?email=" + email);
+      return axios.get("/api/user/?email=" + email);
     },
     getUData: function(){
-      return axios.get("https://second-time-around.herokuapp.com/api/user/");
+      return axios.get("/api/user/");
     },
     findUserID:function(id){
-      return axios.get("https://second-time-around.herokuapp.com/api/user/" + id);
+      return axios.get("/api/user/" + id);
     },
     getUSerData: function(id){
-      return axios.get("https://second-time-around.herokuapp.com/api/stock/?user_id="+id);
+      return axios.get("/api/stock/?user_id="+id);
     },
 };
