@@ -1,13 +1,13 @@
 // const db = require("../models");
 
 // Defining methods for the freeItemsController.
-
+require('dotenv').config();
 
 const Nexmo=require("nexmo");
   
 const nexmo=new Nexmo({
-  apiKey:'d07933a5',
- apiSecret:'nCo581EeuIIvM46r',
+  apiKey:process.env.apiKey1,
+ apiSecret:process.env.apiSecret1,
 },{debug:true})
 
 

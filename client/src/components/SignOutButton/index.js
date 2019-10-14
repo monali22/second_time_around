@@ -4,6 +4,7 @@ class SignOutButton extends React.Component {
     handleLogout=()=>{
         console.log("click logout");
         localStorage.clear();
+        window.location.reload(true);
         
     }
     render(){

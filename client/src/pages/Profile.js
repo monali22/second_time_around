@@ -1,13 +1,15 @@
 import React from "react";
-import Wrapper from "../components/Wrapper";
+import CardWrapper from "../components/CardWrapper";
 import UsersProfile from "../components/UsersProfile";
+// import ProfileTitle from "../components/ProfileTitle";
 
 function Profile() {
     return (
         <div>
-            <Wrapper>
+            {/* <ProfileTitle/> */}
+            <CardWrapper>
                 <UsersProfile />
-            </Wrapper>
+            </CardWrapper>
         </div >
     );
 }

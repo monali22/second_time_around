@@ -1,22 +1,35 @@
 .jumbotron {
     font-weight: bold;
-    background-image: url("https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-    background-size: cover;
+    padding-top: 0%;
+    /* background-image: url("https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"); */
+    /* background-image: url("https://cdn.dribbble.com/users/470545/screenshots/3607374/moving-drib.gif"); */
+    /* background-size: cover; */
+    background-color: white;
     color:black;
-    text-align: center;
+    /* background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;  */
+    /* height: 100%;
+    width: 75%; */
+    /* text-align: center; */
     font-family: Arial, Helvetica, sans-serif;
+    border-radius:0;
 }
 
 .maintext {
     text-transform: lowercase;
     font-size: 2cm;
     letter-spacing: 4px;
+    line-height: 90%;
     color: rgb(65, 65, 65);
-    padding: 40px;
+    padding: 15px;
+    font-weight: bold;
 }
 
+
+
 .secondarytext{
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     letter-spacing: 2px;
     color: rgb(65, 65, 65);
 }
@@ -33,10 +46,13 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbutton{
+.donatebutton{
     color:white;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 40px;
+    border-radius: 24px;
+    margin:5%;
+    /* border-radius:0; */
   }
 
 /* .currentpost{

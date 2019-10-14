@@ -10,9 +10,11 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.navbutton{
+.cardbtn{
     color:white;
     font-family: Arial, Helvetica, sans-serif;
+    border-radius: 24px;
+    
   }
 .cardstyle{
     margin-top: 20px;

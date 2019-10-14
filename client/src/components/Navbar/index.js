@@ -13,6 +13,11 @@ import {Link } from "react-router-dom"
 
 
 class Navbar extends React.Component {
+  state ={
+    login: false
+  }
+
+  state={}
 
   ifLoginClicked = () => {
     this.setState({ isLoggedIn: true });
@@ -37,7 +42,8 @@ class Navbar extends React.Component {
         <nav className="navbar navbar-expand-lg navbar-light">
 
           <Link className="navstylelogo navbar-brand logo" to="/">
-            Second time around
+            {/* Second time around */}
+            <img className="navstylelogo navbar-brand logo" src={require('./logo.png')} height="80" class="d-inline-block align-top logoimg" alt="secondtime"/>
       </Link>
 
 
@@ -84,39 +90,12 @@ class Navbar extends React.Component {
                 </a>
               </li>
             </ul>
-            <form className="form-inline my-2 my-lg-0">
-              <input
-                className="navstyle form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-            </form>
 
-            <a href="/profile"><button className="navbutton btn btn-warning my-2 btn-sm">Profile</button></a>
-              {/* <Link
-                to="/profile"
-                className={
-                  window.location.pathname === "/" || window.location.pathname === "/profile"
-                }
-              >
-                Profile
-            </Link> */}
+            <a href="/profile"><button className="navbuttonprofile btn btn-warning my-2 btn-sm">Profile</button></a>
+              
+              {(localStorage.getItem("nameId")!=null)?<SignOutButton />:<LoginButton name={"Log In"} />}
 
-
-            {/* {
-
-                (localStorage.getItem("nameId").length!=0) ? (
-
-                  <SignOutButton refId={this.handleRef}/>
-
-                ) : ( */}
-
-            <LoginButton refId={this.handleRef} />
-            {/* 
-                  )
-
-              } */}
+              
           </div>
         </nav>
       </div>

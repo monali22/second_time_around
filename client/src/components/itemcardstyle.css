@@ -16,4 +16,14 @@
   }
 .cardstyle{
     margin-top: 20px;
+    float: left;
+   
+}
+
+.address-map {
+    height: 400px;
+}
+
+.card-footer {
+    background-color: white
 }

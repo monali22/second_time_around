@@ -16,3 +16,5 @@ router.route("/:id")
 
   router.route("/:id")
   .post(stockController.update);
+
+  router.route("/findDataOfUser").get(stockController.findUserDataId);
