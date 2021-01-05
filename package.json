@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "@majac/react-social-login": "^1.0.9",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "cloudinary": "^1.14.0",
     "concurrently": "^4.1.1",
